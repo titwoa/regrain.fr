@@ -1,0 +1,85 @@
+---
+title: "Immeuble XVIIe siècle — Évaluation IRS & IV, Aix-en-Provence"
+description: "Évaluation des indices de risque structurel (IRS) et de vétusté (IV) sur un immeuble du XVIIe siècle à Aix-en-Provence. Application complète de la méthodologie avec 8 éléments structuraux évalués."
+publishDate: 2026-02-22
+categories: ["Bâtiment ancien", "Diagnostic structure", "Indices IRS & IV"]
+location: "Aix-en-Provence (13)"
+statut: "Évaluation IRS & IV"
+lat: 43.53200213425676
+lon: 5.4464807532106505
+mapsUrl: "https://maps.google.com/?q=15+rue+jacques+de+la+roques+Aix-en-Provence"
+image:
+  src: "~/assets/images/realisations/immAix/15rueJacquesdelaRoque.png"
+  alt: "Immeuble XVIIe siècle Aix-en-Provence"
+---
+import { Icon } from 'astro-icon/components';
+import PhotoGallery from '~/components/regrain/PhotoGallery.astro';
+
+## Contexte
+
+**Immeuble familial - patrimonial — XVIIe siècle (ca. 1680)**
+rue Jacques de la Roque · 13100 Aix-en-Provence · 320 m² · Réf. 2602P011 · Visite : 03/02/2026
+
+Mission : évaluation quantitative du risque structurel et de la vétusté par la méthode IRS & IV, pour définir les priorités d'intervention et réaliser l'analyse économique de la rénovation sur ce très ancien immeuble situé dans la partie haute du centre-ville historique d'Aix-en-Provence, dans la partie la plus ancienne.
+
+## <Icon name="tabler:home-cancel" class="inline w-7 h-7 text-orange-500" /> IRS — Tableau par élément
+
+Formule : **IRS = D × C × S** — établie sur la base du diagnostic structurel et des notes de calcul de vérification de la portance résiduelle (ratio P'/P).
+*Modificateurs D : ×1,5 si défaut évolutif · ×1,2 si généralisé. Modificateurs S : ×1,5 si multi-niveaux · ×1,3 si porte-à-faux.*
+
+| Élément | Niv. | D | P'/P | C | S | IRS | Risque |
+|---------|:----:|:---:|:----:|:---:|:---:|:---:|--------|
+| Mur pierre cave — mur porteur Nord | Cave | 4,0 × 1,5 = **6,0** | 75 % | 3,0 | 3,0 | **54,0** | 🟠 Élevé |
+| Poteau principal cave — angle Sud-Est | Cave | 2,0 | 85 % | 2,0 | 3,0 × 1,5 = **4,5** | **18,0** | 🟡 Modéré |
+| Poutre maîtresse cave | Cave | 1,0 | — | 1,5 | 2,0 | **3,0** | 🟢 Faible |
+| Plancher RDC — zone centrale | RDC | 2,0 | 90 % | 2,0 | 2,0 | **8,0** | 🟢 Faible |
+| Poteau RDC — façade arrière | RDC | 2,0 | — | 1,5 | 3,0 × 1,5 = **4,5** | **13,5** | 🟡 Modéré |
+| Poutre principale RDC — portée 6 m | RDC | 2,0 | 90 % | 2,0 | 2,0 | **8,0** | 🟢 Faible |
+| Mur porteur RDC — refend central | RDC | 4,0 | — | 1,5 | 3,0 | **18,0** | 🟡 Modéré |
+| Balcon R+1 facade arrière — console porte-à-faux | R+1 | 4,0 × 1,5 = **6,0** | 70 % | 3,0 | 1,0 × 1,3 = **1,3** | **23,4** | 🟡 Modéré |
+
+### Scores globaux IRS
+
+**SEMD = 54** — *Mur pierre cave — mur porteur Nord* 🟠 **Élevé**
+
+**SGMP = 19,2** 🟡 **Modéré**
+
+**Niveau de risque bâtiment = max(SEMD, SGMP) = 54 → 🟠 Élevé**
+
+## <Icon name="tabler:home-dollar" class="inline w-7 h-7 text-green-500" /> IV — Indice de vétusté économique
+
+| Poste | Vétusté | Poids | Contribution |
+|-------|--------:|------:|-------------:|
+| Gros-Œuvre | 18 % | 50 % | 9,0 % |
+| Toiture | 45 % | 15 % | 6,8 % |
+| Réseaux | 88 % | 15 % | 13,2 % |
+| Finitions | 72 % | 20 % | 14,4 % |
+| **IV brut** | **43,4 %** | | |
+| **IV corrigé** (× K = 1,05) | **45,6 %** | | |
+
+**Analyse économique** — prix de reconstruction retenu : 3 850 €/m² (prix expert, [voir méthode d'estimation](/infos/ressources/cout-reconstruction-m2-batiment-ancien "Méthode d'estimation du coût de reconstruction — BT01, DVF, expert")) × 320 m² :
+
+| | |
+|---|---:|
+| Coût de reconstruction neuf | 1 232 000 € |
+| Perte de valeur (IV corrigé = 45,6 %) | ~562 k€ |
+| Valeur résiduelle (100 − 45,6 = 54,4 %) | ~670 k€ |
+| Budget rénovation estimé (70 % de la perte de valeur) | ~393 k€ |
+
+> Le budget rénovation est estimé à **70 % de la perte de valeur** : hypothèse forfaitaire selon laquelle rénover l'existant revient moins cher que reconstruire à neuf la même valeur — les travaux de remise en état d'un bâtiment vétuste coûtent typiquement 60 à 80 % de sa valeur perdue. Il s'agit d'un ordre de grandeur indicatif ; seuls des devis d'entreprises permettront de chiffrer précisément.
+
+## <Icon name="tabler:home-edit" class="inline w-7 h-7 text-blue-500" /> Livrables
+
+- Rapport d'évaluation IRS & IV complet, avec annexes
+ {/* : <a href="/documents/evaluation_IRS_IV_v4.pdf" download class="inline-flex items-center gap-1 text-slate-600 underline hover:text-slate-800"><Icon name="tabler:download" class="inline-block w-4 h-4" /> Télécharger le PDF (5,5 Mo)</a> */}
+- Fiches éléments avec photos et calculs détaillés
+- Programme de travaux priorisé
+
+## <Icon name="tabler:library-photo" class="inline w-7 h-7 text-yellow-500" /> Photos  
+
+<PhotoGallery images={[
+  { src: '~/assets/images/realisations/immAix/20250612_121039.jpg', alt: 'Immeuble XVIIIe siècle Aix-en-Provence' },
+  { src: '~/assets/images/realisations/immAix/20250612_121432.jpg', alt: 'Immeuble XVIIIe siècle Aix-en-Provence' },
+  { src: '~/assets/images/realisations/immAix/20250612_125504.jpg', alt: 'Immeuble XVIIIe siècle Aix-en-Provence' },
+  { src: '~/assets/images/realisations/immAix/20250612_123233.jpg', alt: 'Immeuble XVIIIe siècle Aix-en-Provence' },
+]} />

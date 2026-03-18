@@ -1,0 +1,129 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features from '~/components/widgets/Features.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Content from '~/components/widgets/Content.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import RapportsExpertise from './rapports-expertise.astro';
+
+const metadata = { title: 'Diagnostic Bâtiments Anciens' };
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Nos services"
+    title="Diagnostic des bâtiments anciens"
+    subtitle="Maçonneries en pierre hourdées au mortier chaux-terre, ossatures en bois pour les planchers et charpentes, enduits à la chaux ou en plâtre, monuments historiques ou construction vernaculaires — expertise des structures traditionnelles, identification des pathologies et recommandations de consolidation."
+  />
+
+  <Features
+    title="Les spécificités du bâti ancien"
+    columns={2}
+    items={[
+      {
+        title: 'Très longue exposition aux aléas climatiques',
+        description: 'La durée de vie d\'un bâtiment moderne est estimée à 50 ans et 100 ans pour les ouvrages d\'exception (ponts, barrages...) : que dire lorsque nous sommes en face d\'un bâtiment construit au 17e siècle ? En termes de diagnostic structure, l\'analyse des pathologies doit prendre le critère «\u202Ftemps\u202F» en compte...',
+        icon: 'tabler:stack',
+      },
+      {
+        title: 'Fondations superficielles',
+        description: 'Fondations creusées à de faible profondeur, dès l\'atteinte d\'un sol «\u202Fdur\u202F» sous la pioche... Matériaux généralement de mauvaise qualité (déchets de taille de pierre, pierres de réemploi) et assises de qualité variable le long d\'un même linéaire de fondation, d\'un côté sur un sol «\u202Fdur\u202F», de l\'autre sur des remblais compressibles...',
+        icon: 'tabler:stack',
+      },
+      {
+        title: 'Maçonneries - murs en pierre',
+        description: 'Pierre calcaire hourdées avec un mortier de faible résistance, dominant dans notre région PACA. Comportement mécanique «\u202Fsouple\u202F» mais sensibilité importante en présence d\'eau — la résistance dépend de la qualité des fondations qui restent les plus souvent superficielles, ainsi que des joints, de l\'appareillage et de la performance des enduits. Portance initiale faible souvent soumise à des facteurs aggravants tels que la création de grandes ouvertures en Rez de chaussée pour des commerces ou le rajout de planchers.',
+        icon: 'tabler:building-arch',
+      },
+      {
+        title: 'Ossatures bois - planchers et charpentes',
+        description: 'Planchers avec poutraisons souvent surdimensionnées mais exposées aux fuites d\'eau des pièces humides comme aux surcharges successives au cours du temps : division des surfaces en plusieurs appartement, rajouts multiples de chapes d\'égalisation, ossature des escaliers et paliers soumises aux tassements différentiels du bâti support... <br> Charpentes à fermes soumises aux aléas climatiques, aux attaques d\'insectes xylophages ou de champignons lignivores et aux déformations différées.',
+        icon: 'tabler:trees',
+      },
+      {
+        title: 'Matériaux locaux',
+        description: 'Murs en maçonnerie de blocage (moellons non taillés assemblés/hourdés avec un mortier chaux-terre), Pisé (terre compactée), plâtre, chaux — très sensibles à l\'exposition et aux forts gradients d\'humidité. Nécessitent une approche spécifique prenant en compte leur faible résistance initiale.',
+        icon: 'tabler:home',
+      },
+      {
+        title: 'Liants anciens',
+        description: 'Mortiers de chaux naturelle, ou «\u202Fbâtards\u202F» en mélange avec de la terre, emploi du plâtre parfois. Faible raideur, qualité variable selon les fabricants et la mise en oeuvre. Faible résistance à la lixiviation-au délitement par le contact prolongé avec l\'humidité — comportement bien différent des mortiers au ciment mais parfaitement adapté avec les matériaux anciens — incompatibilité fréquente avec les matériaux modernes.',
+        icon: 'tabler:stack',
+      },
+    ]}
+  />
+
+  <Features
+    tagline="Pathologies diagnostiquées"
+    title="Pathologies fréquentes sur le bâti ancien"
+    items={[
+      {
+        title: 'Dégradation des enduits et joints de maçonneries',
+        description: 'Érosion et décollement du mur support des enduits traditionnels chaux/sable soumis aux extrema & aléas climatiques. <br> Lixiviation et ramollissement des joints de hourdage en chaux/terre/plâtre dans les murs soumis aux remontées capillaires (caves). <br> Ovalisation des voûtes en plein cintre des caves, par dégradation progressives des joints.',
+        icon: 'tabler:alert-triangle',
+      },
+      {
+        title: 'Tassements différentiels des murs porteurs',
+        description: 'Fissures en escalier-d\'allure biaise suivant les lignes de faiblesse, ou en moustache aux angles de baies. <br> Dépassement de la résistance en compression pour les trumeaux situés au niveau du Rez de chaussée, par l\'agrandissement des baies de devanture commerciales.',
+        icon: 'tabler:trending-down',
+      },
+      {
+        title: 'Attaques d\'insectes xylophages',
+        description: 'Capricornes, vrillettes, termites dans les structures bois. Facteur aggravant en association avec l\'humidité et l\'absence d\'entretien. Perte de résistance brutale (termites) ou progressive.',
+        icon: 'tabler:bug',
+      },
+      {
+        title: 'Pourriture & ramollissement du bois',
+        description: 'Pourriture et dégradation des propriétés mécaniques du bois en contact avec l\'humidité —<br> empochement des poutres de planchers dans les murs aux étages, poutres des plafonds de caves (toujours) humides, fuites discrètes des réseaux d\'amenée ou d\'évacuation des eaux.',
+        icon: 'tabler:droplet',
+      },
+      {
+        title: 'Altération de la pierre',
+        description: 'Gel-dégel, pluies acides, pollution urbaine, présence d\'eau, permanente ou alternance. Désorganisation de la matrice cimentaire, recul du parement en surface sous l\'effet de l\'érosion combinée aux croûtes noires provenant de la pollution urbaine. Dépassement de la résistance en compression par l\'amenée de surcharges d\'exploitation ou des tassements différentiels',
+        icon: 'tabler:snowflake',
+      },
+      {
+        title: 'Déformations globales',
+        description: 'Faux-aplomb des murs (bombements, ventres), affaissement des planchers, déversement/ovalisation des voûtes, tassements des sols d\'assise.',
+        icon: 'tabler:chevrons-down',
+      },
+    ]}
+    columns={3}
+  />
+
+  <Steps
+    tagline="Notre méthode"
+    title="Déroulement d'un diagnostic bâtiment ancien"
+    items={[
+      {
+        title: 'Recherche documentaire',
+        description: 'Analyse des plans anciens, permis, archives cadastrales, historique des travaux et des sinistres, à l\'échelle du bâtiment ou du quartier. Prise en compte des aléas connus du sous-sol (dépôts/remblais historiques, circulations d\'eaux souterraines, nature et portance typique du substratum, présence d\'hétérogénéités).',
+        icon: 'tabler:search',
+      },
+      {
+        title: 'Inspection visuelle détaillée pas à pas',
+        description: 'Relevé complet des désordres, cartographie des fissures, évaluation de la sévérité et de l\'étendue de chaque pathologie, prise de nombreuses photographies en suivant toujours la même démarche niveau par niveau, pièce par pièce, du sol au plafond. Rétroconception des phases et procédés constructifs, analyse des similitudes comme des exceptions notables. Identification de la nature, de l\'origine des matériaux employés et de leur réemploi éventuel. Mesures physiques type contrôle non destructif appliquées en cas de besoin : humidité des parements pierre/enduit/bois, dureté superficielle au scléromètre de poche, mise en vibration de parois élancées (cloisons devenues porteuses) comme des planchers minces (ossature bois), mesures géométriques au distomètre pour le contrôle de flèches des poutraisons, au fil à plomb pour le faux aplomb des murs porteurs, micro-sondages destructifs pour déterminer la composition d\'un plancher, inspection à l\'endoscope de cavités ou lézardes, etc.',
+        icon: 'tabler:eye',
+      },
+      {
+        title: 'Investigations complémentaires',
+        description: 'En cas de besoin seulement — sondages destructifs, instrumentation des pathologies (ouverture fissures, déversement murs) — si possible, instrumentation par capteurs électroniques permettant un traitement des données à distance et une bien meilleure réactivité en cas de dépassement de seuils (seuils de déplacements maximaux ou de rapidité d\'évolution définis en adéquation avec le phénomène à suivre).',
+        icon: 'tabler:tool',
+      },
+      {
+        title: 'Rapport et préconisations',
+        description: 'Rapport illustré avec photos, synthèse des désordres, causes identifiées, pronostic des risques pour les occupants et le bâti et programme de travaux priorisé avec estimatifs. Format PDF comprenant une navigation par titres et une version  compressée en cas de nombreuses photos (de 26 à 3 Mo par exemple). Archive informatique comprenant l\'ensemble des photos et le ou les rapports, disponible par lien de téléchargement.',
+        icon: 'tabler:file-description',
+      },
+    ]}
+  />
+
+  <CallToAction
+    title="Diagnostic structure bâtiment ancien"
+    subtitle="Immeuble haussmannien, maison de maître, construction vernaculaire ou ferme ancienne — nous adaptons notre méthode à chaque ouvrage."
+    actions={[
+      { variant: 'primary', text: 'Demander un devis', href: '/contact', icon: 'tabler:mail' },
+    ]}
+  />
+</Layout>

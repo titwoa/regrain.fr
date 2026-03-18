@@ -1,0 +1,154 @@
+---
+title: "Méthode d'évaluation IRS & IV"
+description: "Présentation de la méthodologie IRS (Indice de Risque Structurel) et IV (Indice de Vétusté) : formules, coefficients, interprétation et exemples de calcul. Outil de priorisation des interventions sur le bâti existant."
+publishDate: 2025-10-10
+category: "Méthodologie"
+tags: ["IRS", "Vétusté", "Méthodologie", "Risque structurel", "Diagnostic"]
+image:
+  src: "~/assets/images/ressources/methode-irs-iv_nanobanana.png"
+  alt: "Schéma de la méthode IRS & IV — procédure complète"
+---
+
+import { Icon } from 'astro-icon/components';
+
+## Pourquoi IRS et IV ?
+
+Les méthodes d'évaluation des indices IRS et IV répondent à un besoin concret : **quantifier et prioriser** les risques structurels et la vétusté économique d'un bâtiment, plutôt que de simplement les identifier qualitativement.
+
+Ces indices permettent :
+- De comparer des bâtiments ou des éléments entre eux
+- De prioriser les interventions sur un parc immobilier
+- D'objectiver les décisions d'investissement
+- De suivre l'évolution dans le temps
+
+## <Icon name="tabler:home-cancel" class="inline w-7 h-7 text-orange-500" /> L'IRS — Indice de Risque Structurel
+
+L'IRS est établi sur la base d'un **diagnostic structurel** réalisé par un ingénieur structure, complété si nécessaire par des **notes de calcul de vérification** de la portance résiduelle (ratio P'/P) sur les éléments structurels essentiels.
+
+### Formule
+
+**IRS = D × C × S**
+
+Où :
+- **D** = Niveau de dégradation observé (1 à 16, avec modificateurs si défaut évolutif ou généralisé)
+- **C** = Coefficient de perte de capacité portante, déterminé par le ratio P'/P (portance résiduelle / portance d'origine)
+- **S** = Criticité de l'élément dans la structure (avec modificateurs si multi-niveaux ou porte-à-faux)
+
+### Coefficient D — Dégradation
+
+| Valeur | Description |
+|--------|-------------|
+| 1 | Aucun désordre |
+| 2 | Désordres très légers, non évolutifs |
+| 4 | Désordres modérés, évolution lente |
+| 8 | Désordres importants, évolution active |
+| 16 | Désordres très importants, rupture imminente |
+
+*Modificateur : ×1,5 si le défaut est évolutif ; ×1,2 si le défaut est généralisé.*
+
+### Coefficient C — Perte de capacité portante (P'/P)
+
+C est un **multiplicateur de risque** croissant avec la perte de portance. Il est déterminé par les notes de calcul de vérification structurelle (ratio P'/P) :
+
+| Ratio P'/P | C | Signification |
+|-----------|---|---------------|
+| ≥ 1,20 | 1,0 | Capacité augmentée ou intacte |
+| 1,00 – 1,20 | 1,5 | Légère réduction |
+| 0,80 – 1,00 | 2,0 | Réduction modérée |
+| 0,60 – 0,80 | 3,0 | Réduction significative |
+| < 0,60 | 5,0 | Réduction sévère |
+| Non calculé | 1,5 | Valeur par défaut (prudence) |
+
+### Coefficient S — Criticité de l'élément
+
+| Valeur | Type d'élément |
+|--------|----------------|
+| 1 | Élément secondaire (cloison, finition) |
+| 2 | Élément structurel non indispensable |
+| 3 | Élément structurel vital (poteau, mur porteur) |
+
+*Modificateur : ×1,5 si l'élément s'étend sur plusieurs niveaux ; ×1,3 si porte-à-faux.*
+
+### Interprétation de l'IRS par élément
+
+| IRS | Couleur | Signification | Action |
+|-----|---------|---------------|--------|
+| < 10 | 🟢 Vert | Risque faible | Surveillance |
+| 10 – 30 | 🟡 Jaune | Risque modéré | Maintenance préventive |
+| 30 – 60 | 🟠 Orange | Risque élevé | Travaux à planifier |
+| 60 – 120 | 🔴 Rouge | Risque critique | Travaux urgents |
+| > 120 | ⚫ Noir | Danger immédiat | Évacuation |
+
+### Scores globaux du bâtiment
+
+- **SEMD** (Score Élément Maximum Dangereux) = Max(IRS individuels) — représente le risque maximal sur un élément
+- **SGMP** (Score Global Moyen Pondéré) = moyenne pondérée par criticité — représente l'état général du bâtiment
+- **IRS final** = max(SEMD, SGMP)
+
+## <Icon name="tabler:home-dollar" class="inline w-7 h-7 text-green-500" /> L'IV — Indice de Vétusté économique
+
+L'IV est un **indice économique** : il traduit la vétusté du bâtiment en taux de dépréciation, permettant d'estimer la valeur résiduelle et d'orienter les décisions de rénovation ou de reconstruction.
+
+### Taux de vétusté par poste
+
+Le cœur du calcul IV est l'**évaluation des taux de vétusté sur 4 postes**, réalisée par l'ingénieur lors de la visite :
+
+| Poste | Pondération | Ce qu'on évalue |
+|-------|-------------|-----------------|
+| Gros-Œuvre (structure, fondations) | 50 % | État des murs, planchers, structure générale |
+| Toiture | 15 % | Couverture, charpente, étanchéité |
+| Réseaux (eau, électricité, chauffage) | 15 % | Vétusté et conformité des installations |
+| Finitions | 20 % | Revêtements, menuiseries, enduits |
+
+L'IV brut est la moyenne pondérée de ces quatre taux. Un coefficient de correction **K** (≥ 1) est ensuite appliqué pour tenir compte d'un déficit d'entretien constaté, donnant l'**IV corrigé**.
+
+### Analyse économique
+
+Une fois l'IV corrigé obtenu, l'analyse économique s'appuie sur un **prix unitaire de reconstruction au m²** :
+- fourni par le syndic ou son expert (valeur retenue en priorité),
+- ou estimé par REGRAIN à partir des indices BT01 et des transactions DVF locales.
+
+Ce prix permet de calculer la **valeur résiduelle** du bâtiment et d'estimer le **budget de rénovation**, guidant la décision entre réhabiliter et reconstruire.
+
+## Exemple simplifié
+
+### <Icon name="tabler:home-cancel" class="inline w-7 h-7 text-orange-500" /> IRS
+
+Pour un immeuble avec 5 éléments structuraux :
+
+| Élément | D | P'/P | C | S | IRS |
+|---------|---|------|---|---|-----|
+| Poteau | 4 | 85 % | 2,0 | 3 | 24,0 |
+| Mur porteur | 2 | 90 % | 2,0 | 3 | 12,0 |
+| Plancher | 2 | 90 % | 2,0 | 2 | 8,0 |
+| Balcon | 4 | 70 % | 3,0 | 1 | 12,0 |
+| Cloison | 2 | — | 1,5 | 1 | 3,0 |
+
+**SEMD** = 24,0 (poteau) → Risque modéré
+**SGMP** = (24×3 + 12×3 + 8×2 + 12×1 + 3×1) / (3+3+2+1+1) = **13,7** → Risque modéré
+
+### <Icon name="tabler:home-dollar" class="inline w-7 h-7 text-green-500" /> IV
+
+Taux de vétusté observés lors de la visite :
+
+| Poste | Vétusté | Poids | Contribution |
+|-------|--------:|------:|-------------:|
+| Gros-Œuvre | 20 % | 50 % | 10,0 % |
+| Toiture | 40 % | 15 % | 6,0 % |
+| Réseaux | 60 % | 15 % | 9,0 % |
+| Finitions | 50 % | 20 % | 10,0 % |
+| **IV brut** | | | **35,0 %** |
+| **IV corrigé** (× K = 1,10) | | | **38,5 %** |
+
+Prix de reconstruction retenu (fourni par le syndic) : **2 500 €/m²** — surface : **800 m²**
+
+| | |
+|---|---:|
+| Coût de reconstruction neuf | 2 000 000 € |
+| Perte de valeur (IV corrigé = 38,5 %) | ~770 000 € |
+| Valeur résiduelle (61,5 %) | ~1 230 000 € |
+| Budget rénovation estimé (70 % de la perte de valeur) | ~539 000 € |
+
+[→ Voir une application concrète dans nos réalisations](/realisations/evaluation-irs-immeuble-exemple)
+
+[→ Demander une évaluation IRS & IV](/contact)

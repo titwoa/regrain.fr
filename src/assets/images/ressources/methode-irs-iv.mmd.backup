@@ -1,0 +1,71 @@
+flowchart TD
+    VISITE(["🔍 Visite sur site\nDiagnostic structurel"])
+
+    subgraph IRS ["  IRS — Indice de Risque Structurel  "]
+        direction TB
+        D["<b>D</b> — Dégradation observée\n1 · 2 · 4 · 8 · 16\n× 1,5 si évolutif · × 1,2 si généralisé"]
+        CALC["Notes de calcul de vérification\nPortance résiduelle P' / Portance origine P"]
+        C["<b>C</b> — Perte de capacité portante\nf(P'/P) : 1,0 → 1,5 → 2,0 → 3,0 → 5,0"]
+        S["<b>S</b> — Criticité de l'élément\n1 · 2 · 3\n× 1,5 si multi-niveaux · × 1,3 si porte-à-faux"]
+        IRS_ELEM["<b>IRS = D × C × S</b>\npar élément structurel"]
+        SEMD["SEMD = max(IRS)\nRisque maximal"]
+        SGMP["SGMP = moyenne pondérée\nÉtat général"]
+        IRS_FINAL(["<b>IRS final</b> = max(SEMD, SGMP)"])
+        RECO_IRS["Recommandations\n&lt;10 Faible · 10–30 Modéré\n30–60 Élevé · 60–120 Critique · &gt;120 Danger"]
+        D --> IRS_ELEM
+        C --> IRS_ELEM
+        S --> IRS_ELEM
+        CALC --> C
+        IRS_ELEM --> SEMD
+        IRS_ELEM --> SGMP
+        SEMD --> IRS_FINAL
+        SGMP --> IRS_FINAL
+        IRS_FINAL --> RECO_IRS
+    end
+
+    subgraph IV ["  IV — Indice de Vétusté économique  "]
+        direction TB
+        GO["<b>Gros-Œuvre</b>\nvétusté estimée × 50 %"]
+        TOIT["<b>Toiture</b>\nvétusté estimée × 15 %"]
+        RES["<b>Réseaux</b>\nvétusté estimée × 15 %"]
+        FIN["<b>Finitions</b>\nvétusté estimée × 20 %"]
+        IV_BRUT["<b>IV brut</b>\n= somme des contributions pondérées"]
+        K["× K — coefficient d'entretien\n(≥ 1 si déficit d'entretien constaté)"]
+        IV_CORR(["<b>IV corrigé</b>"])
+        PRIX["Prix de reconstruction au m²\nExpert syndic · BT01 · DVF locales"]
+        PERTE["Perte de valeur\n= IV corrigé × coût reconstruction"]
+        VAL_RES["Valeur résiduelle\n= (1 − IV) × coût reconstruction"]
+        BUDGET["Budget rénovation estimé\n≈ 70 % de la perte de valeur"]
+        GO --> IV_BRUT
+        TOIT --> IV_BRUT
+        RES --> IV_BRUT
+        FIN --> IV_BRUT
+        IV_BRUT --> K
+        K --> IV_CORR
+        IV_CORR --> PERTE
+        PRIX --> PERTE
+        PRIX --> VAL_RES
+        IV_CORR --> VAL_RES
+        PERTE --> BUDGET
+    end
+
+    RAPPORT(["📄 Rapport IRS & IV\nPriorités d'intervention + analyse économique"])
+
+    VISITE --> D
+    VISITE --> CALC
+    VISITE --> GO
+    VISITE --> TOIT
+    VISITE --> RES
+    VISITE --> FIN
+    RECO_IRS --> RAPPORT
+    BUDGET --> RAPPORT
+    VAL_RES --> RAPPORT
+
+    style VISITE fill:#2c5282,color:#fff,stroke:#1a365d
+    style IRS_FINAL fill:#e53e3e,color:#fff,stroke:#c53030
+    style IV_CORR fill:#2b6cb0,color:#fff,stroke:#2c5282
+    style RAPPORT fill:#276749,color:#fff,stroke:#22543d
+    style CALC fill:#fffbeb,stroke:#d69e2e
+    style PRIX fill:#fffbeb,stroke:#d69e2e
+    style IRS fill:#fff5f5,stroke:#fc8181,color:#742a2a
+    style IV fill:#ebf8ff,stroke:#63b3ed,color:#1a365d

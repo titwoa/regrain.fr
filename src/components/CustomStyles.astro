@@ -1,0 +1,56 @@
+---
+// Regrain – Montserrat (body) + Oswald (headings) via Google Fonts
+// Couleurs neutres : palette Slate (Tailwind)
+---
+
+<style is:inline>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Oswald:wght@300;400;500&display=swap');
+
+  :root {
+    --aw-font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    --aw-font-serif: 'Montserrat', ui-serif, Georgia, serif;
+    --aw-font-heading: 'Oswald', ui-sans-serif, system-ui, sans-serif;
+
+    /* Slate palette */
+    --aw-color-primary: rgb(71 85 105);      /* slate-600 */
+    --aw-color-secondary: rgb(100 116 139);  /* slate-500 */
+    --aw-color-accent: rgb(148 163 184);     /* slate-400 */
+
+    --aw-color-text-heading: rgb(15 23 42);  /* slate-900 */
+    --aw-color-text-default: rgb(30 41 59);  /* slate-800 */
+    --aw-color-text-muted: rgb(100 116 139); /* slate-500 */
+    --aw-color-bg-page: rgb(248 250 252);    /* slate-50 */
+    --aw-color-bg-page-dark: rgb(15 23 42);  /* slate-900 */
+
+    ::selection {
+      background-color: rgb(226 232 240);    /* slate-200 */
+      color: rgb(15 23 42);
+    }
+  }
+
+  .dark {
+    --aw-font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    --aw-font-serif: 'Montserrat', ui-serif, Georgia, serif;
+    --aw-font-heading: 'Oswald', ui-sans-serif, system-ui, sans-serif;
+
+    --aw-color-primary: rgb(148 163 184);    /* slate-400 */
+    --aw-color-secondary: rgb(100 116 139);  /* slate-500 */
+    --aw-color-accent: rgb(71 85 105);       /* slate-600 */
+
+    --aw-color-text-heading: rgb(248 250 252); /* slate-50 */
+    --aw-color-text-default: rgb(226 232 240); /* slate-200 */
+    --aw-color-text-muted: rgb(148 163 184);   /* slate-400 */
+    --aw-color-bg-page: rgb(15 23 42);         /* slate-900 */
+
+    ::selection {
+      background-color: rgb(51 65 85);       /* slate-700 */
+      color: rgb(248 250 252);
+    }
+  }
+
+  /* Headings en Oswald uppercase */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--aw-font-heading);
+    letter-spacing: 0.02em;
+  }
+</style>

@@ -1,0 +1,76 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features from '~/components/widgets/Features.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = { title: 'Diagnostic Structurel — Bâti Existant' };
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Nos services"
+    title="Diagnostic structurel du bâti existant"
+    subtitle="Évaluation complète de l'état structurel d'un bâtiment : identification des pathologies, causes, niveau de risque et programme d'intervention."
+  />
+
+  <Features
+    tagline="Notre approche"
+    title="Un diagnostic global et rigoureux"
+    items={[
+      {
+        title: 'Tous types de bâtiments',
+        description: 'Maisons individuelles, immeubles collectifs, bâtiments industriels, monuments historiques — nous adaptons notre méthode à chaque ouvrage.',
+        icon: 'tabler:building',
+      },
+      {
+        title: 'Tous matériaux',
+        description: 'Pierre, bois, béton armé, acier, terre crue — notre expertise couvre l\'ensemble des techniques constructives historiques et modernes.',
+        icon: 'tabler:stack',
+      },
+      {
+        title: 'Indépendance totale',
+        description: 'Sans lien avec les entreprises de travaux, nous vous conseillons en toute objectivité. Notre seul engagement : la vérité technique.',
+        icon: 'tabler:shield-check',
+      },
+    ]}
+    columns={3}
+  />
+
+  <Steps
+    tagline="Notre méthode"
+    title="Les 4 phases du diagnostic"
+    items={[
+      {
+        title: 'Écoute et préparation',
+        description: 'Recueil de votre situation, historique du bâtiment et des désordres. Définition des objectifs de la mission.',
+        icon: 'tabler:ear',
+      },
+      {
+        title: 'Inspection et investigation',
+        description: 'Visite complète du bâtiment, relevé photographique exhaustif, investigations complémentaires si nécessaire.',
+        icon: 'tabler:eye',
+      },
+      {
+        title: 'Analyse et diagnostic',
+        description: 'Identification des pathologies, des causes et mécanismes, évaluation du niveau de risque structurel.',
+        icon: 'tabler:search',
+      },
+      {
+        title: 'Rapport et conseil',
+        description: 'Rapport illustré et pédagogique, programme de travaux priorisé, accompagnement dans vos décisions.',
+        icon: 'tabler:file-description',
+      },
+    ]}
+  />
+
+  <CallToAction
+    title="Diagnostic structurel"
+    subtitle="Besoin d'évaluer l'état d'un bâtiment ? Contactez-nous pour définir la mission adaptée à votre situation."
+    actions={[
+      { variant: 'primary', text: 'Demander un devis', href: '/contact', icon: 'tabler:mail' },
+      { text: 'Voir nos réalisations →', href: '/realisations', icon: 'tabler:briefcase' },
+    ]}
+  />
+</Layout>

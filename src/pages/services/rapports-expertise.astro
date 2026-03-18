@@ -1,0 +1,85 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features from '~/components/widgets/Features.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = { title: "Rapports d'Expertise Structurale" };
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Nos services"
+    title="Rapports d'expertise structurale"
+    subtitle="Rapports techniques pour assureurs, notaires, tribunaux, syndics ou maîtres d'ouvrage — documentation complète, conclusions claires et défendables."
+  />
+
+  <Features
+    tagline="Contextes d'intervention"
+    title="Pour quelles situations ?"
+    items={[
+      {
+        title: 'Contentieux d\'assurance',
+        description: 'Constitution du dossier technique pour les reconnaissances CatNat (RGA, inondation) ou les sinistres dommages-ouvrage.',
+        icon: 'tabler:shield',
+      },
+      {
+        title: 'Transactions immobilières',
+        description: 'Rapport technique pour l\'acquéreur ou le vendeur — évaluation de l\'état structurel avant signature.',
+        icon: 'tabler:home-dollar',
+      },
+      {
+        title: 'Procédures judiciaires',
+        description: 'Rapport technique en appui d\'une expertise judiciaire ou pour un référé-expertise.',
+        icon: 'tabler:gavel',
+      },
+      {
+        title: 'Procédures de péril',
+        description: 'Constat et rapport pour les procédures de péril ordinaire ou imminent — pour les collectivités ou les propriétaires.',
+        icon: 'tabler:alert-triangle',
+      },
+      {
+        title: 'Dossiers de financement',
+        description: 'Rapport pour dossiers DRAC (Monuments Historiques), demandes de subvention, copropriétés en difficulté.',
+        icon: 'tabler:file-invoice',
+      },
+      {
+        title: 'Copropriétés',
+        description: 'Rapport pour présentation en assemblée générale de copropriétaires — état de l\'immeuble, travaux à prévoir.',
+        icon: 'tabler:building-community',
+      },
+    ]}
+    columns={3}
+  />
+
+  <Features
+    tagline="Qualité des rapports"
+    title="Nos engagements"
+    items={[
+      {
+        title: 'Rigueur et impartialité',
+        description: 'Nos rapports présentent les faits observés, les causes identifiées et les conclusions qui en découlent — sans parti pris.',
+        icon: 'tabler:scale',
+      },
+      {
+        title: 'Documentation photographique',
+        description: 'Chaque désordre est illustré par des photos géolocalisées dans le rapport.',
+        icon: 'tabler:camera',
+      },
+      {
+        title: 'Conclusions exploitables',
+        description: 'Les rapports sont rédigés de manière à être compris par des non-techniciens tout en étant techniquement irréprochables.',
+        icon: 'tabler:check',
+      },
+    ]}
+    columns={3}
+  />
+
+  <CallToAction
+    title="Rapport d'expertise"
+    subtitle="Un rapport technique indépendant pour étayer votre dossier."
+    actions={[
+      { variant: 'primary', text: 'Nous contacter', href: '/contact', icon: 'tabler:mail' },
+    ]}
+  />
+</Layout>

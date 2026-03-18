@@ -1,0 +1,37 @@
+site:
+  name: Regrain
+  site: 'https://regrain.fr'
+  base: '/'
+  trailingSlash: false
+  googleSiteVerificationId: ''
+
+# Métadonnées SEO par défaut
+metadata:
+  title:
+    default: 'Regrain — Diagnostic Structurel'
+    template: '%s — Regrain'
+  description: "Bureau d'études structures spécialisé en diagnostics structurels d'ouvrages existants. Bâtiments anciens et récents, évaluation IRS, diagnostic RGA."
+  robots:
+    index: true
+    follow: true
+  openGraph:
+    site_name: Regrain
+    images:
+      - url: '~/assets/images/logo_regrain_250px.png'
+    type: website
+
+i18n:
+  language: fr
+  textDirection: ltr
+
+apps:
+  blog:
+    isEnabled: false
+
+analytics:
+  vendors:
+    googleAnalytics:
+      id: G-2ESHS8J67Y # null # or "G-XXXXXXXXXX" G-2ESHS8J67Y
+
+ui:
+  theme: 'light:only'

@@ -1,0 +1,62 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features from '~/components/widgets/Features.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = { title: 'Préconisations & Plans Guide' };
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Nos services"
+    title="Préconisations & plans guide"
+    subtitle="À l'issue d'un diagnostic, nous définissons le programme de travaux : nature des interventions, priorisation, estimatifs budgétaires et plans guide pour les entreprises."
+  />
+
+  <Features
+    tagline="Contenu"
+    title="Ce que comprennent nos préconisations"
+    items={[
+      {
+        title: 'Programme de travaux priorisé',
+        description: 'Travaux urgents, à court terme et à long terme — classés par niveau d\'urgence et d\'importance.',
+        icon: 'tabler:list-check',
+      },
+      {
+        title: 'Estimatifs budgétaires',
+        description: 'Fourchettes de coûts pour chaque intervention, pour permettre de préparer le financement.',
+        icon: 'tabler:coin',
+      },
+      {
+        title: 'Plans guide 2D',
+        description: 'Plans de situation des travaux, localisation des renforts, géométrie des éléments à créer.',
+        icon: 'tabler:ruler-2',
+      },
+      {
+        title: 'Visualisations 3D',
+        description: 'Pour les interventions complexes, des visualisations 3D facilitent la compréhension par les maîtres d\'œuvre et les artisans.',
+        icon: 'tabler:cube-3d-sphere',
+      },
+      {
+        title: 'Spécifications matériaux',
+        description: 'Caractéristiques des matériaux recommandés : classes d\'acier, résistances béton, essences de bois.',
+        icon: 'tabler:package',
+      },
+      {
+        title: 'Détails d\'ancrage',
+        description: 'Détails constructifs des assemblages et ancrages, pour une exécution sans ambiguïté.',
+        icon: 'tabler:link',
+      },
+    ]}
+    columns={3}
+  />
+
+  <CallToAction
+    title="Préconisations techniques"
+    subtitle="Un programme clair et chiffré pour planifier vos travaux de consolidation."
+    actions={[
+      { variant: 'primary', text: 'Demander un devis', href: '/contact', icon: 'tabler:mail' },
+    ]}
+  />
+</Layout>

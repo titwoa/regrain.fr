@@ -1,0 +1,6 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="300" fill="#f0eeeb"/>
+  <circle cx="150" cy="120" r="50" fill="#939bc9" opacity="0.5"/>
+  <rect x="100" y="180" width="100" height="120" fill="#939bc9" opacity="0.5"/>
+  <text x="150" y="260" font-family="Montserrat, sans-serif" font-size="14" fill="black" text-anchor="middle">Photo équipe</text>
+</svg>

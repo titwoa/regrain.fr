@@ -1,0 +1,69 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import ProjectCard from '~/components/regrain/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const metadata = { title: 'Réalisations — Projets de Diagnostic Structurel' };
+
+const realisations = await getCollection('realisations', ({ data }) => !data.draft);
+realisations.sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Quelques réalisations"
+    title="Diagnostics structurels & autres prestations"
+    subtitle="Choix de fiches de missions réalisées — bâtiments anciens et patrimoniaux, immeubles collectifs récents, maisons individuelles. <br>    
+    Interventions principalement en région PACA."
+  />
+
+  <section class="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+    <!-- Lien vers la carte -->
+    <div class="mb-8 flex items-center justify-between">
+      <p class="text-slate-500 text-sm">{realisations.length} réalisation{realisations.length > 1 ? 's' : ''}</p>
+      <a
+        href="/carte"
+        class="inline-flex items-center gap-2 text-sm text-slate-600 hover:text-slate-800 border border-slate-300 rounded-md px-3 py-1.5 transition hover:border-slate-500"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M3 7l6-3 6 3 6-3v13l-6 3-6-3-6 3V7"></path>
+          <line x1="9" y1="4" x2="9" y2="18"></line><line x1="15" y1="7" x2="15" y2="21"></line>
+        </svg>
+        Voir la carte
+      </a>
+    </div>
+
+    <!-- Grille des projets -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        realisations.map((proj) => (
+          <ProjectCard
+            title={proj.data.title}
+            description={proj.data.description}
+            href={`/realisations/${proj.id}`}
+            image={proj.data.image}
+            categories={proj.data.categories}
+            location={proj.data.location}
+            statut={proj.data.statut}
+            publishDate={proj.data.publishDate}
+          />
+        ))
+      }
+    </div>
+  </section>
+
+  <CallToAction
+    title="Votre projet"
+    subtitle="Besoin d'un diagnostic structurel ? Contactez-nous pour définir votre mission."
+    actions={[{ variant: 'primary', text: 'Nous contacter', href: '/contact', icon: 'tabler:mail' }]}
+  />
+</Layout>

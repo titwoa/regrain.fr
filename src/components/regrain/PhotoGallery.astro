@@ -1,0 +1,175 @@
+---
+/**
+ * PhotoGallery — grille cliquable + lightbox PhotoSwipe.
+ *
+ * Comportement :
+ *   - Les images s'affichent en grille, plus grandes qu'une simple miniature.
+ *   - Un clic ouvre le lightbox centré (pas plein écran) avec animation zoom.
+ *   - Flèches gauche/droite + clavier pour naviguer, Échap ou clic hors image pour fermer.
+ *   - L'image "fond" (fade+zoom retour) vers sa position dans la grille à la fermeture.
+ *
+ * Usage dans MDX :
+ *   import PhotoGallery from '~/components/regrain/PhotoGallery.astro';
+ *
+ *   <PhotoGallery
+ *     caption="Photos de chantier"
+ *     images={[
+ *       { src: '/images/.../photo.jpg', alt: 'Description', width: 3024, height: 4032 },
+ *       '/images/.../autre.jpg',
+ *     ]}
+ *     columns={3}
+ *     thumbHeight={220}
+ *     loop={true}
+ *   />
+ *
+ * Props :
+ *   images      — tableau d'objets { src, alt?, width?, height? } ou simples strings
+ *   caption     — légende affichée au-dessus de la grille
+ *   columns     — 2 | 3 | 4  (défaut 3)
+ *   thumbHeight — hauteur des vignettes en px (défaut 220)
+ *   loop        — boucle infinie (défaut true)
+ *
+ * Note : fournir width/height réels améliore l'animation d'ouverture.
+ *        Si omis, la bibliothèque les détecte automatiquement au chargement.
+ */
+
+import { findImage } from '~/utils/images';
+import Image from '~/components/common/Image.astro';
+
+interface ImageItem {
+  src: string;
+  alt?: string;
+  /** Largeur réelle de l'image en px (optionnel) */
+  width?: number;
+  /** Hauteur réelle de l'image en px (optionnel) */
+  height?: number;
+}
+
+interface Props {
+  images: Array<ImageItem | string>;
+  caption?: string;
+  columns?: 2 | 3 | 4;
+  thumbHeight?: number;
+  loop?: boolean;
+}
+
+const {
+  images,
+  caption,
+  columns    = 3,
+  thumbHeight = 220,
+  loop       = true,
+} = Astro.props;
+
+const items: ImageItem[] = images.map((img) =>
+  typeof img === 'string' ? { src: img } : img
+);
+
+// Résoudre les images (ImageMetadata ou string absolute) pour que PhotoSwipe et <Image> fonctionnent
+const resolvedItems = await Promise.all(
+  items.map(async (item) => {
+    const resolved = await findImage(item.src);
+    return {
+      ...item,
+      resolvedSrc: resolved, // Metadata pour <Image>, string pour PhotoSwipe href
+      displaySrc: (typeof resolved === 'object' && resolved !== null && 'src' in resolved) ? (resolved as any).src : resolved,
+    };
+  })
+);
+
+const galleryId = `pswp-${Math.random().toString(36).slice(2, 8)}`;
+
+const colClass: Record<number, string> = {
+  2: 'grid-cols-2',
+  3: 'grid-cols-2 sm:grid-cols-3',
+  4: 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4',
+};
+---
+
+{caption && (
+  <p class="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-3 mt-6">
+    {caption}
+  </p>
+)}
+
+<div
+  id={galleryId}
+  class={`grid ${colClass[columns]} gap-3 my-4`}
+  data-loop={loop ? 'true' : 'false'}
+>
+  {resolvedItems.map((item, i) => (
+    <a
+      href={item.displaySrc}
+      data-pswp-width={item.width  ?? 0}
+      data-pswp-height={item.height ?? 0}
+      class="block overflow-hidden rounded-md bg-slate-100 cursor-zoom-in hover:brightness-95 transition"
+      title={item.alt}
+    >
+      <Image
+        src={item.src}
+        alt={item.alt || `Photo ${i + 1}`}
+        style={`height: ${thumbHeight}px`}
+        class="w-full object-cover"
+      />
+    </a>
+  ))}
+</div>
+
+<!-- Script module : Astro le déduplique, les options viennent des data-attributes -->
+<script>
+  import PhotoSwipeLightbox from 'photoswipe/lightbox';
+  import 'photoswipe/style.css';
+
+  function initGalleries() {
+    document
+      .querySelectorAll<HTMLElement>('[id^="pswp-"]:not([data-pswp-init])')
+      .forEach((el) => {
+        const loop = el.dataset.loop !== 'false';
+
+        // Lecture des dimensions réelles depuis les <img> miniatures déjà chargées.
+        // naturalWidth/naturalHeight = dimensions réelles du fichier, pas CSS.
+        // PhotoSwipe en a besoin AVANT d'ouvrir pour calculer zl.fit correctement.
+        const setDimsFromThumb = (link: HTMLAnchorElement) => {
+          const thumb = link.querySelector<HTMLImageElement>('img');
+          if (thumb?.complete && thumb.naturalWidth) {
+            link.dataset.pswpWidth  = String(thumb.naturalWidth);
+            link.dataset.pswpHeight = String(thumb.naturalHeight);
+          }
+        };
+        el.querySelectorAll<HTMLAnchorElement>('a[data-pswp-width]').forEach((link) => {
+          const thumb = link.querySelector<HTMLImageElement>('img');
+          if (!thumb) return;
+          if (thumb.complete) setDimsFromThumb(link);
+          else thumb.addEventListener('load', () => setDimsFromThumb(link), { once: true });
+        });
+
+        const lightbox = new PhotoSwipeLightbox({
+          gallery:    `#${el.id}`,
+          children:   'a[data-pswp-width]',
+          pswpModule: () => import('photoswipe'),
+          loop,
+          // Marge autour de l'image → fond visible et cliquable pour fermer
+          padding: { top: 48, bottom: 48, left: 72, right: 72 },
+          bgOpacity:             0.88,
+          closeOnVerticalDrag:   true,
+          // Fermer d'un clic sur le fond (zone hors image)
+          clickToCloseNonZoomable: true,
+          wheelToZoom:           true,
+          // Ne jamais upscaler : une petite image reste à sa taille native (1:1 max)
+          initialZoomLevel:  (zl) => Math.min(1, zl.fit),
+          secondaryZoomLevel: 1,
+        });
+
+        lightbox.init();
+        el.dataset.pswpInit = '1';
+      });
+  }
+
+  initGalleries();
+  document.addEventListener('astro:page-load', () => {
+    document.querySelectorAll<HTMLElement>('[id^="pswp-"]').forEach((el) => {
+      delete el.dataset.pswpInit;
+    });
+    initGalleries();
+  });
+</script>

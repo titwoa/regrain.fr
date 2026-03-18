@@ -1,0 +1,21 @@
+---
+import { Image } from 'astro:assets';
+import logoSrc from '~/assets/images/logo-regrain-header.png';
+---
+
+<span class="flex items-center gap-2">
+  <!-- <img
+    src="/images/favicon_regrain.svg"
+    alt=""
+    aria-hidden="true"
+    class="h-5 w-auto"
+    loading="eager"
+  /> -->
+  <Image
+    src={logoSrc}
+    alt="Regrain"
+    height={36}
+    class="h-9 w-auto"
+    loading="eager"
+  />
+</span>

@@ -1,0 +1,48 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { getCollection } from 'astro:content';
+import { render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const { title, description, publishDate, author, tags } = entry.data;
+const dateStr = publishDate.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Layout metadata={{ title }}>
+  <article class="mx-auto max-w-3xl px-4 py-12 sm:px-6">
+    <div class="mb-6">
+      <a href="/infos/blog" class="text-sm text-slate-500 hover:text-slate-700">← Retour au blog</a>
+    </div>
+
+    <div class="flex flex-wrap gap-2 mb-4">
+      {tags?.map((tag) => (
+        <span class="rounded-full bg-slate-100 px-3 py-0.5 text-xs text-slate-600">{tag}</span>
+      ))}
+    </div>
+
+    <h1 class="font-heading text-3xl font-medium uppercase text-slate-800 mb-4">{title}</h1>
+
+    {description && (
+      <p class="text-lg text-slate-500 mb-6 leading-relaxed">{description}</p>
+    )}
+
+    <div class="flex items-center gap-4 text-sm text-slate-400 mb-10 pb-6 border-b border-slate-100">
+      <span>{dateStr}</span>
+      {author && <span>Par {author}</span>}
+    </div>
+
+    <div class="prose prose-slate prose-headings:font-heading prose-headings:uppercase max-w-none">
+      <Content />
+    </div>
+  </article>
+</Layout>

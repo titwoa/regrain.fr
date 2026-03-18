@@ -1,0 +1,190 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+/**
+ * AutoCarousel — carrousel inline auto-animé avec boucle.
+ * Basé sur Splide.js (@splidejs/splide).
+ *
+ * Usage avec images importées (optimisées WebP) :
+ *
+ *   import AutoCarousel from '~/components/regrain/AutoCarousel.astro';
+ *   import photo from '~/assets/images/photo.jpg';
+ *
+ *   <AutoCarousel images={[{ src: photo, alt: 'Photo' }]} />
+ *
+ * Usage avec URL string (public/ ou externe, non optimisé) :
+ *
+ *   <AutoCarousel images={[{ src: '/images/photo.jpg', alt: 'Photo' }]} />
+ */
+
+interface Slide {
+  src: string | ImageMetadata;
+  alt?: string;
+  caption?: string;
+}
+
+interface Props {
+  images: Array<Slide | string>;
+  /** Durée entre chaque slide en ms (défaut : 3500) */
+  interval?: number;
+  /** Durée de la transition en ms (défaut : 600) */
+  speed?: number;
+  /** Afficher les flèches de navigation */
+  arrows?: boolean;
+  /** Afficher les points de pagination */
+  pagination?: boolean;
+  /** Ratio hauteur/largeur (défaut : 'video' = 16/9) */
+  ratio?: 'video' | 'square' | 'photo' | 'portrait';
+  /** object-contain au lieu de object-cover (pour documents, couvertures PDF) */
+  contain?: boolean;
+}
+
+const {
+  images,
+  interval = 3500,
+  speed = 600,
+  arrows = false,
+  pagination = true,
+  ratio = 'video',
+  contain = false,
+} = Astro.props;
+
+const slides: Slide[] = images.map((img) =>
+  typeof img === 'string' ? { src: img } : img
+);
+
+// ID unique pour permettre plusieurs instances sur la même page
+const id = `splide-${Math.random().toString(36).slice(2, 8)}`;
+
+const ratioClass: Record<string, string> = {
+  video:    'aspect-video',
+  square:   'aspect-square',
+  photo:    'aspect-[4/3]',
+  portrait: 'aspect-[3/4]',
+};
+
+const imgFit = contain ? 'object-contain p-4' : 'object-cover';
+---
+
+<div
+  id={id}
+  class="splide rounded-lg shadow-sm"
+  aria-label="Galerie photos"
+  data-autocarousel
+  data-interval={interval}
+  data-speed={speed}
+  data-arrows={String(arrows)}
+  data-pagination={String(pagination)}
+>
+  <div class="splide__track">
+    <ul class="splide__list">
+      {slides.map((slide) => (
+        <li class="splide__slide">
+          <div class={`${ratioClass[ratio]} w-full bg-slate-100`}>
+            {typeof slide.src === 'string' ? (
+              <img
+                src={slide.src}
+                alt={slide.alt ?? ''}
+                class={`h-full w-full ${imgFit}`}
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <Image
+                src={slide.src}
+                alt={slide.alt ?? ''}
+                class={`h-full w-full ${imgFit}`}
+                width={800}
+                loading="lazy"
+              />
+            )}
+          </div>
+          {slide.caption && (
+            <p class="text-xs text-slate-500 text-center py-1.5 px-2 bg-white/80">
+              {slide.caption}
+            </p>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+<!-- Module script: Vite bundle l'import correctement, dédupliqué si plusieurs instances -->
+<script>
+  import Splide from '@splidejs/splide';
+
+  const instances = new WeakMap<HTMLElement, Splide>();
+
+  function initCarousels() {
+    document.querySelectorAll<HTMLElement>('[data-autocarousel]').forEach((el) => {
+      if (instances.has(el)) return;
+
+      const interval   = parseInt(el.dataset.interval   ?? '3500');
+      const speed      = parseInt(el.dataset.speed      ?? '600');
+      const arrows     = el.dataset.arrows     !== 'false';
+      const pagination = el.dataset.pagination !== 'false';
+
+      const splide = new Splide(el, {
+        type:          'loop',
+        autoplay:      true,
+        interval,
+        speed,
+        arrows,
+        pagination,
+        pauseOnHover:  true,
+        resetProgress: false,
+        lazyLoad:      'nearby',
+      });
+
+      splide.mount();
+      instances.set(el, splide);
+    });
+  }
+
+  initCarousels();
+  document.addEventListener('astro:page-load', initCarousels);
+</script>
+
+<!-- is:global pour que les sélecteurs Splide (injectés dynamiquement) soient toujours ciblés -->
+<style is:global>
+  @import '@splidejs/splide/css/core';
+
+  /* Track gets overflow + border-radius (outer wrapper no longer has overflow-hidden) */
+  .splide__track {
+    overflow: hidden;
+    border-radius: 0.5rem;
+  }
+
+  /* Pagination container — positioned below the track */
+  .splide__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 0 3px;
+    list-style: none;
+    margin: 0;
+    position: static !important;
+  }
+
+  /* Dots */
+  .splide__pagination__page {
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    background: rgb(148 163 184); /* slate-400 */
+    opacity: 0.5;
+    transition: opacity 0.2s, transform 0.2s, background 0.2s;
+  }
+  .splide__pagination__page.is-active {
+    background: rgb(71 85 105); /* slate-600 */
+    opacity: 1;
+    transform: scale(1.35);
+  }
+</style>

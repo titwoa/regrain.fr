@@ -1,0 +1,84 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import TeamMember from '~/components/regrain/TeamMember.astro';
+import photoOTurlier from '~/assets/images/team/o-turlier.jpg';
+import photoNextinge from '~/assets/images/team/avatar.png';
+
+const metadata = { title: "L'équipe Regrain" };
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="À propos"
+    title="L'équipe du BET REGRAIN"
+    subtitle="Des ingénieurs expérimentés, spécialisés dans le diagnostic du bâti existant."
+  />
+
+  <section class="mx-auto max-w-5xl px-4 py-16 sm:px-6 space-y-8">
+    <TeamMember
+      name="Olivier TURLIER"
+      title="Ingénieur — Fondateur"
+      image={photoOTurlier.src}
+      bio="Ingénieur diplômé du CNAM, Olivier Turlier a fondé Regrain après plus de 25 ans d'expérience dans le diagnostic du bâti existant. Il est particulièrement spécialisé dans les bâtiments anciens et le patrimoine historique.  
+      Auparavant, il dirigé des travaux de rénovation de bâtiments existants, tant patrimoniaux que récents."
+      stats={[
+        { value: '35+', label: "Années d'expérience" },
+        { value: '350+', label: 'Projets réalisés' },
+        { value: 'CNAM', label: 'Diplôme' },
+        { value: 'PACA', label: 'Région principale' },
+      ]}
+      expertise={[
+        'Bâtiments anciens et patrimoine',
+        'Pierre, bois, pisé, briques, plâtre, matériaux traditionnels',
+        'Techniques traditionnelles',
+        'Évaluation IRS & IV',
+        'Gestion de crise (AMO péril batimentaire)',
+        'Plan guides 2D/3D',
+        'Description & chiffrage de travaux',
+      ]}
+    />
+
+    <TeamMember
+      name="Prénom NOM"
+      title="Ingénieur — Spécialiste Diagnostics"
+      image={photoNextinge.src}
+      bio="Diplômé de l'École Centrale, Prénom NOM apporte son expertise en béton armé, structures modernes et méthodes de diagnostic instrumenté. Il est spécialisé dans les structures en béton et la corrosion des armatures."
+      stats={[
+        { value: '15+', label: 'Ans en diagnostics' },
+        { value: '8+', label: 'Ans calcul structure' },
+        { value: 'Centrale', label: 'Diplôme' },
+        { value: 'PACA', label: 'Région principale' },
+      ]}
+      expertise={[
+        'Béton armé et corrosion',
+        'Méthodes non-destructives',
+        'Calcul aux Eurocodes',
+        'Diagnostic RGA',
+        'Suivi instrumenté',
+        'Dossiers assurance',
+      ]}
+    />
+  </section>
+
+  <section class="mx-auto max-w-5xl px-4 pb-16 sm:px-6">
+    <div class="rounded-lg border border-slate-200 bg-slate-50 p-8">
+      <h2 class="font-heading text-xl font-medium uppercase text-slate-700 mb-4">
+        Réseau de partenaires
+      </h2>
+      <p class="text-slate-600 leading-relaxed">
+        Pour les investigations spécialisées qui dépassent nos équipements propres, nous collaborons avec un réseau de partenaires
+        de confiance : laboratoires d'analyse, BET géotechniques, BET spécialistes du bois ou des charpentes métalliques et architectes du patrimoine.
+      </p>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Travailler avec nous"
+    subtitle="Contactez-nous pour votre projet de diagnostic structurel."
+    actions={[
+      { variant: 'primary', text: 'Nous contacter', href: '/contact', icon: 'tabler:mail' },
+    ]}
+  />
+</Layout>

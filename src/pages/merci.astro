@@ -1,0 +1,24 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = { title: 'Merci — Regrain' };
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Contact"
+    title="Message bien reçu"
+    subtitle="Merci pour votre demande. Nous vous répondrons sous 24–48h en semaine. En cas d'urgence, n'hésitez pas à nous appeler directement."
+  />
+
+  <CallToAction
+    title="En attendant notre réponse"
+    subtitle="Consultez nos services ou explorez nos réalisations."
+    actions={[
+      { variant: 'primary', text: 'Nos services', href: '/services', icon: 'tabler:tools' },
+      { variant: 'secondary', text: 'Retour à l\'accueil', href: '/' },
+    ]}
+  />
+</Layout>

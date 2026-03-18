@@ -1,0 +1,56 @@
+---
+// Lightbox component for image gallery
+// Uses GLightbox - lightweight vanilla JS lightbox
+---
+
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js" type="module"></script>
+</head>
+
+<script hoist>
+  let initialized = false;
+
+  const initLightbox = () => {
+    if (initialized) return;
+    
+    // Target both header images and article images
+    const images = document.querySelectorAll('section img, article img');
+    
+    images.forEach((img) => {
+      // Skip already wrapped images
+      if (img.parentElement.tagName === 'A') return;
+      
+      const href = img.src;
+      const caption = img.alt || '';
+      
+      // Create wrapper anchor
+      const anchor = document.createElement('a');
+      anchor.href = href;
+      anchor.className = 'lightbox';
+      anchor.setAttribute('data-glightbox', caption ? `title: ${caption}` : '');
+      
+      // Clone and replace
+      img.parentNode?.insertBefore(anchor, img);
+      anchor.appendChild(img);
+    });
+    
+    const lightbox = GLightbox({
+      selector: '.lightbox',
+      touchNavigation: true,
+      loop: true,
+      autoplayVideos: true,
+    });
+    
+    initialized = true;
+  };
+
+  // Initialize on mount
+  initLightbox();
+</script>
+
+<style is:global>
+  .glightbox-desc {
+    display: none !important;
+  }
+</style>

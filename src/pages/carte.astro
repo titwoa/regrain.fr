@@ -1,0 +1,164 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import { getCollection } from 'astro:content';
+
+const metadata = { title: 'Carte des Réalisations — Regrain' };
+
+const allRealisations = await getCollection('realisations', ({ data }) => !data.draft);
+
+const markers = allRealisations
+  .filter((r) => r.data.lat != null && r.data.lon != null)
+  .map((r) => ({
+    lat:        r.data.lat as number,
+    lon:        r.data.lon as number,
+    title:      r.data.title,
+    location:   r.data.location ?? '',
+    categories: r.data.categories ?? [],
+    href:       `/realisations/${r.id}`,
+  }));
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Réalisations"
+    title="Carte des interventions"
+  >
+    <Fragment slot="subtitle">
+      Géolocalisation des projets présentés sur la page <a href="/realisations" class="underline">Réalisations</a>, en région PACA, vallée du Rhône et Corse.
+    </Fragment>
+  </HeroText>
+
+  <section class="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+    <div
+      id="regrain-map"
+      data-markers={JSON.stringify(markers)}
+      class="rounded-lg border border-slate-200 overflow-hidden"
+      style="height: 600px;"
+    ></div>
+    <p class="mt-4 text-sm text-slate-400 text-center flex flex-wrap justify-center gap-6">
+      <button id="map-reload" class="underline hover:text-slate-600 cursor-pointer">↺ Rafraîchir la carte</button>
+      <a href="/realisations" class="underline hover:text-slate-600">Voir la liste complète des réalisations →</a>
+    </p>
+  </section>
+</Layout>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+
+  // ── Couleurs par catégorie ─────────────────────────────────────────────
+  const COLORS: Record<string, string> = {
+    'RGA':                 '#ef4444',
+    'Indices IRS & IV':    '#f97316',
+    'Fissures':            '#eab308',
+    'Bâtiment ancien':     '#22c55e',
+    'Bâtiment moderne':    '#06b6d4',
+    'Béton armé':          '#3b82f6',
+    'Mur de soutènement':  '#8b5cf6',
+    'Monument historique': '#ec4899',
+    'Patrimoine':          '#ec4899',
+    'Surveillance':        '#f59e0b',
+    'Note de calcul':      '#0ea5e9',
+  };
+  const DEFAULT_COLOR = '#64748b';
+
+  function getColor(categories: string[]): string {
+    for (const cat of categories) {
+      if (COLORS[cat]) return COLORS[cat];
+    }
+    return DEFAULT_COLOR;
+  }
+
+  type Marker = { lat: number; lon: number; title: string; location: string; categories: string[]; href: string };
+
+  function initMap() {
+    const el = document.getElementById('regrain-map') as HTMLElement & { _leafletMap?: L.Map };
+    if (!el) return;
+
+    // Détruire l'instance précédente si elle existe
+    if (el._leafletMap) {
+      el._leafletMap.remove();
+      el._leafletMap = undefined;
+    }
+
+    const markers: Marker[] = JSON.parse(el.dataset.markers ?? '[]');
+
+    const map = L.map(el, { minZoom: 5 }).setView([43.8, 5.4], 8);
+    el._leafletMap = map;
+
+    // CartoDB Positron — fond clair, discret
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution:
+        '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors ' +
+        '© <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19,
+      minZoom: 5,
+    }).addTo(map);
+
+    // ── Marqueurs ────────────────────────────────────────────────────────
+    markers.forEach(({ lat, lon, title, location, categories, href }) => {
+      const color = getColor(categories);
+      const tags = categories
+        .map((c) => {
+          const bg = COLORS[c] ?? DEFAULT_COLOR;
+          return `<span style="display:inline-block;background:${bg};color:#fff;font-size:0.7em;padding:1px 7px;border-radius:9999px;margin:2px 2px 0 0">${c}</span>`;
+        })
+        .join('');
+
+      const popup = `
+        <div style="min-width:200px;font-family:inherit">
+          <strong style="font-size:0.9em">${title}</strong><br>
+          <span style="color:#64748b;font-size:0.78em">${location}</span><br>
+          <div style="margin:4px 0">${tags}</div>
+          <a href="${href}" style="font-size:0.82em;color:#2563eb;text-decoration:underline">
+            Voir la réalisation →
+          </a>
+        </div>`;
+
+      L.circleMarker([lat, lon], {
+        radius:      9,
+        fillColor:   color,
+        color:       '#fff',
+        weight:      2,
+        opacity:     1,
+        fillOpacity: 0.88,
+      }).bindPopup(popup).addTo(map);
+    });
+
+    // ── Ajuster la vue sur l'ensemble des marqueurs ───────────────────────
+    if (markers.length > 0) {
+      const bounds = L.latLngBounds(markers.map((m) => [m.lat, m.lon] as [number, number]));
+      map.fitBounds(bounds, { padding: [48, 48] });
+    }
+
+    // Corrige les cas où le conteneur change de taille après init
+    setTimeout(() => map.invalidateSize(), 150);
+  }
+
+  function setupPage() {
+    initMap();
+    // Re-attacher le bouton sur le nouvel élément DOM (après chaque navigation)
+    document.getElementById('map-reload')?.addEventListener('click', initMap);
+  }
+
+  // Chargement initial (full reload)
+  setupPage();
+
+  // Navigation Astro View Transitions (client-side) — événement correct pour Astro
+  document.addEventListener('astro:page-load', () => setupPage());
+</script>
+
+<style is:global>
+  /* Override Leaflet image paths — images copied to /public/images/ */
+  .leaflet-default-icon-path {
+    background-image: url('/images/marker-icon.png');
+  }
+  .leaflet-control-layers-toggle {
+    background-image: url('/images/layers.png');
+  }
+  .leaflet-retina .leaflet-control-layers-toggle {
+    background-image: url('/images/layers-2x.png');
+  }
+</style>

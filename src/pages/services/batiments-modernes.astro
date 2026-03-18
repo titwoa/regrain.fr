@@ -1,0 +1,124 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features from '~/components/widgets/Features.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = { title: 'Diagnostic Bâtiments Récents' };
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Nos services"
+    title="Diagnostic des bâtiments récents"
+    subtitle="Béton armé, poutrelles acier, constructions postérieures à 1925 — diagnostic structurel complet : fissures, corrosion des armatures et poutres acier, carbonatation du béton."
+  />
+
+  <Features
+    tagline="Pathologies diagnostiquées"
+    title="Pathologies fréquentes sur le bâti moderne"
+    items={[
+      {
+        title: 'Corrosion des armatures par carbonatation du béton ou chlorures',
+        description: 'Le CO₂ atmosphérique neutralise la protection alcaline du béton. Les armatures se corrodent et font éclater le béton d\'enrobage. —<br> Attaques par chlorures en environnement marin (Marseille) ou avec sels de déverglaçage (Montagne). ',
+        icon: 'tabler:alert-triangle',
+      },
+      {
+        title: 'Épaufrures',
+        description: 'Éclatement du béton sous l\'effet de l\'augmentation du volume des barres d\'armatures corrodées. Phénomène très répandu dont l`\'évolution est exponentielle, en lien avec l\'inéluctable carbonation du béton et les fréquents défauts d\'exécution (enrobage insuffisant). Les traitements préventifs sont souvent ignorés au profit des actions correctives.',
+        icon: 'tabler:droplets',
+      },
+      {
+        title: 'Fissuration structurelle',
+        description: 'Fissures au jeune âge (défaut de cure du béton frais) ou sur béton durci, liées à des surcharges non-prévues (balcons) ou des liaisons mal conçues (absence ou rareté des joints de dilatation), des tassements différentiels, à l\'insuffisance de résistance de fondations superficielles face au phénomène de retrait-gonflement des argiles (RGA) ou des défauts de conception.',
+        icon: 'tabler:arrow-zig-zag',
+      },
+      {
+        title: 'Défauts d\'exécution',
+        description: 'Nids de cailloux, défaut d\'enrobage et de recouvrement des barres d\'armature. Non-respect des règles de mise en œuvre, défaut de cure du béton au jeune âge ou d\'étanchéité des coffrages — identifiés par investigations non-destructives ou faciès d\'altérations typiques.',
+        icon: 'tabler:tool',
+      },
+      {
+        title: 'Défauts d\'aspect',
+        description: 'Phénomène plus fréquent en bâtiment qu\'en génie-civil ou les bétons sont de bien meilleure qualité. Décollements, farinage, décoloration, salissures : le béton vieillit mal sans entretien préventif régulier !',
+        icon: 'tabler:trending-down',
+      },
+      {
+        title: 'Réaction alcali-granulats (RAG) & sulfatique interne (RSI)',
+        description: 'Plus rare : réactions de gonflement interne du béton causé par diverses réactions chimiques et aggravées en présence d\'eau. Réseau de microfissures caractéristiques et conditions d\'apparition de ces pathologies bien documentées, évitées aujourd\'hui.',
+        icon: 'tabler:atom',
+      },
+    ]}
+    columns={3}
+  />
+
+  <Features
+    tagline="Investigations"
+    title="Méthodes d'investigation utilisées"
+    items={[
+      {
+        title: 'Inspection visuelle',
+        description: 'Cartographie des fissures, des épaufrures, des traces de rouille et autres faciès d\'altération typiques. Recherche des anomalies dimensionnelles, faux-aplombs, sens d\'ouverture des fissures traduisant le type de déplacement de la structure. Rétroconception des procédés constructifs, notamment en cas de préfabrication.',
+        icon: 'tabler:eye',
+      },
+      {
+        title: 'Détection de la présence d\'armatures',
+        description: 'Localisation des armatures et mesure de l\'enrobage par détection électromagnétique. Pachomètre, «\u202FFerroscan\u202F» ou géoradars dont les diverses antennes permettent de détecter des armatures à une profondeur importante.',
+        icon: 'tabler:magnet',
+      },
+      {
+        title: 'Présence d\'eau',
+        description: 'Par thermographie infra-rouge, détection de parois saturées en eau, exposées à plus d\'aléas qu\'une paroi «\u202Fsèche\u202F».',
+        icon: 'tabler:magnet',
+      },
+      {
+        title: 'Sondages destructifs',
+        description: 'Carottages béton pour carbonatation et résistance à la compression, découverte de barres d\'armatures pour corrélation des mesures de détection électromagnétiques et prélèvement d\'échantillons sur les structures en aciers relativement anciennes pour identification (fer puddlé ?) et caractérisation de la résistance en traction.',
+        icon: 'tabler:tool',
+      },
+      
+    ]}
+    columns={4}
+  />
+
+  <Steps
+    tagline="Notre méthode"
+    title="Déroulement du diagnostic"
+    items={[
+      {
+        title: 'Recherche documentaire',
+        description: 'Analyse des plans disponibles et autres pièces de marché. Recherche des méthodes constructives si préfabrication ou autres procédés spéciaux et des pathologies courantes associées (exemple : «\u202Fmaisons Phénix\u202F»).',
+        icon: 'tabler:search',
+      },
+      {
+        title: 'Inspection visuelle détaillée pas à pas',
+        description: 'Visite et relevé des désordres visibles, de l\'échelle macro au détail microscopique. Un soin particulier est apporté aux éléments «\u202Fà risque\u202F» tels que les balcons. Détections de défauts systémiques/faciès d\'altération connus et tentative de rétroconception des phasages de construction. Prise de nombreuses photographies en appliquant la même méthode que pour les bâtiments anciens.',
+        icon: 'tabler:eye',
+      },
+      {
+        title: 'Investigations complémentaires',
+        description: 'En cas de besoin seulement — Détection de présence et diamètres des armatures, carottages de béton et profondeur du front de carbonatation, prélèvement d\'échantillons de structures métalliques.',
+        icon: 'tabler:tool',
+      },
+      {
+        title: 'Analyse et diagnostic',
+        description: 'Identification des causes des pathologies, pronostic du niveau de risque pour les occupants et le bâti.',
+        icon: 'tabler:search',
+      },
+      {
+        title: 'Rapport et préconisations',
+        description: 'Rapport illustré avec photos, analyses, pronostics et préconisations-programme de travaux priorisé avec estimatifs. Format PDF comprenant une navigation par titres et une version  compressée en cas de nombreuses photos (de 26 à 3 Mo par exemple). Archive informatique comprenant l\'ensemble des photos et le ou les rapports, disponible par lien de téléchargement.',
+        icon: 'tabler:file-description',
+      },
+    ]}
+  />
+
+  <CallToAction
+    title="Diagnostic structure bâtiment récent"
+    subtitle="Fissures, épaufrures et corrosion — un diagnostic complet pour définir les travaux nécessaires, curatifs et préventifs."
+    actions={[
+      { variant: 'primary', text: 'Demander un devis', href: '/contact', icon: 'tabler:mail' },
+    ]}
+  />
+</Layout>

@@ -1,0 +1,82 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+
+const metadata = { title: 'Politique de confidentialité — Regrain' };
+---
+
+<Layout metadata={metadata}>
+  <HeroText tagline="Confidentialité" title="Politique de confidentialité" />
+
+  <article
+    class="mx-auto max-w-3xl px-4 py-12 sm:px-6 prose prose-slate prose-headings:font-heading prose-headings:uppercase"
+  >
+    <p class="text-slate-500">Dernière mise à jour : Janvier 2026</p>
+
+    <h2>Responsable du traitement</h2>
+    <p>
+      <strong>Regrain</strong> — 341 chemin des basses beaumes, 84360 Puget<br />
+      SIRET : 511 997 538 00059<br />
+      Email : <a href="mailto:contact@regrain.fr">contact@regrain.fr</a>
+    </p>
+
+    <h2>Données collectées</h2>
+    <p>Via le formulaire de contact, nous collectons :</p>
+    <ul>
+      <li>Nom et prénom</li>
+      <li>Adresse email</li>
+      <li>Numéro de téléphone (optionnel)</li>
+      <li>Informations sur le bâtiment et la demande</li>
+    </ul>
+
+    <h2>Finalité du traitement</h2>
+    <p>
+      Les données collectées sont utilisées exclusivement pour répondre à votre demande de contact ou de diagnostic.
+      Elles ne sont pas utilisées à des fins commerciales ou marketing sans votre consentement explicite.
+    </p>
+
+    <h2>Durée de conservation</h2>
+    <p>
+      Vos données sont conservées pendant la durée nécessaire au traitement de votre demande, et au maximum 3 ans à
+      compter du dernier contact, conformément aux obligations légales.
+    </p>
+
+    <h2>Destinataires des données</h2>
+    <p>
+      Vos données sont traitées uniquement par Regrain. Elles ne seront jamais transmises à des prestataires techniques
+      externes à Regrain (hébergement, gestion des emails) dans le cadre du traitement de votre demande. Elles ne sont
+      pas vendues ni cédées à des tiers.
+    </p>
+
+    <h2>Vos droits</h2>
+    <p>Conformément au RGPD (Règlement Général sur la Protection des Données), vous disposez des droits suivants :</p>
+    <ul>
+      <li><strong>Droit d'accès</strong> : connaître les données vous concernant</li>
+      <li><strong>Droit de rectification</strong> : corriger vos données</li>
+      <li><strong>Droit d'effacement</strong> : demander la suppression de vos données</li>
+      <li><strong>Droit d'opposition</strong> : vous opposer au traitement</li>
+      <li><strong>Droit à la portabilité</strong> : obtenir vos données dans un format réutilisable</li>
+    </ul>
+    <p>
+      Pour exercer ces droits, contactez-nous à : <a href="mailto:contact@regrain.fr">contact@regrain.fr</a>
+    </p>
+
+    <h2>Cookies</h2>
+    <p>
+      Ce site ne dépose pas de cookies de tracking ou publicitaires. Les seuls cookies éventuels sont des cookies
+      techniques nécessaires au bon fonctionnement du site.
+    </p>
+
+    <h2>Sécurité</h2>
+    <p>
+      Nous mettons en œuvre les mesures techniques et organisationnelles appropriées pour protéger vos données contre
+      tout accès non autorisé, perte ou destruction.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Pour toute question relative à cette politique de confidentialité :<br />
+      <a href="mailto:contact@regrain.fr">contact@regrain.fr</a>
+    </p>
+  </article>
+</Layout>

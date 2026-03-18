@@ -1,0 +1,162 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features from '~/components/widgets/Features.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = { title: "Le BET REGRAIN" };
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="À propos"
+    title="REGRAIN — Bureau d'études structures"
+    subtitle="Spécialisé en diagnostic structurel d'ouvrages existants depuis plus de 25 ans, REGRAIN intervient principalement en région PACA, vallée du Rhône et la Corse."
+  />
+
+  <Content
+    title="Notre mission"
+    content={`
+<p>REGRAIN est un bureau d'études indépendant spécialisé dans le <strong>diagnostic structurel des ouvrages existants</strong>. <br /> Notre mission : vous aider à comprendre l'état de votre bâtiment, identifier les causes des désordres, en évaluer les risques et définir les interventions nécessaires.</p>
+
+<p>Nous intervenons sur tous types d'ouvrages — des maisons individuelles aux immeubles collectifs, des constructions anciennes en pierre aux bâtiments en béton armé, en passant par les monuments historiques.</p>
+
+<p>Notre positionnement d'<strong>expert indépendant</strong>, sans lien avec les entreprises de travaux, garantit l'objectivité de nos conclusions.</p>
+    `}
+    image={{
+      src: '~/assets/images/logo_regrain_250px.png',
+      alt: 'Logo Regrain',
+    }}
+  />
+
+  <Features
+    tagline="Nos valeurs"
+    title="Ce qui guide notre travail"
+    items={[
+      {
+        title: 'Rigueur technique et scientifique',
+        description: 'Chaque diagnostic est fondé sur une observation systématique et des investigations adaptées. Nos conclusions reposent sur des faits mesurés, pas sur des suppositions.',
+        icon: 'tabler:microscope',
+      },
+      {
+        title: 'Indépendance et objectivité',
+        description: 'Sans lien avec aucune entreprise de travaux, nous n\'avons aucun intérêt à surestimer ou sous-estimer l\'ampleur des désordres.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Respect du patrimoine',
+        description: 'Pour le bâti ancien et les monuments historiques, nous privilégions les approches non-destructives et les solutions respectueuses des matériaux d\'origine.',
+        icon: 'tabler:building-monument',
+      },
+      {
+        title: 'Conseil et pédagogie',
+        description: 'Nos rapports sont rédigés pour être compris par des non-spécialistes. Nous expliquons, conseillons et accompagnons.',
+        icon: 'tabler:book',
+      },
+    ]}
+    columns={4}
+  />
+
+  <Stats
+    stats={[
+      { amount: '35+', title: "Années d'expérience" },
+      { amount: '200+', title: 'Projets réalisés' },
+      { amount: '95%', title: 'Clients satisfaits' },
+      { amount: '2', title: 'Bureaux (Vaucluse & Marseille)' },
+    ]}
+  />
+
+  <Features
+    tagline="Domaines d'expertise"
+    title="Notre champ d'intervention"
+    items={[
+      {
+        title: 'Bâtiments anciens',
+        description: 'Pierre, bois, chaux, plâtre, bâti patrimonial, immeubles de centre ville historiques...',
+        icon: 'tabler:building-arch',
+      },
+      {
+        title: 'Bâtiments récents',
+        description: 'Béton armé, charpentes métalliques ou fermettes bois, constructions d\'après 1920.',
+        icon: 'tabler:building-skyscraper',
+      },
+      {
+        title: 'Risque RGA',
+        description: 'Retrait-gonflement des argiles — évaluation, vulnérabilité, prévention.',
+        icon: 'tabler:ripple',
+      },
+      {
+        title: 'Préconisations et plans-guide',
+        description: 'Description adaptée des travaux de renfort, plans guides 2D/3D explicite et précis.',
+        icon: 'tabler:map-share',
+      },
+    ]}
+    columns={4}
+  />
+
+  <Steps
+    tagline="Notre méthode"
+    title="Comment nous travaillons"
+    items={[
+      {
+        title: 'Écouter',
+        description: 'Comprendre votre situation, vos questions et vos objectifs avant toute intervention.',
+        icon: 'tabler:ear',
+      },
+      {
+        title: 'Analyser',
+        description: 'Observer, mesurer, investiguer, calculer — avec les outils et protocoles adaptés à chaque situation.',
+        icon: 'tabler:search',
+      },
+      {
+        title: 'Prévoir',
+        description: 'Établir un pronostic réaliste de la cinétique des dégradations — pour les occupants et le bâti.',
+        icon: 'tabler:home-exclamation',
+      },
+      {
+        title: 'Préconiser',
+        description: 'Décider et décrire en détails des travaux de réfection — Les représenter avec exactitude.',
+        icon: 'tabler:map-share',
+      },
+      {
+        title: 'Accompagner',
+        description: 'Suivre la mise en œuvre si nécessaire, répondre aux questions des entreprises, réceptionner les travaux.',
+        icon: 'tabler:users',
+      },
+    ]}
+  />
+
+  <Testimonials
+    title="Ce que disent nos clients"
+    testimonials={[
+      {
+        testimonial: 'Diagnostic structure clair, tant dans l\'analyse des causes que pour les travaux à réaliser. Regrain nous a permis de faire voter les travaux en assemblée.',
+        name: 'Syndic de copropriété',
+        job: 'Marseille (13)',
+      },
+      {
+        testimonial: 'Diagnostic approfondi avant achat d\'une maison ancienne. On comprend enfin ce qu\'il faut faire et combien ça coûte.',
+        name: 'Propriétaire acquéreur',
+        job: 'Vaucluse (84)',
+      },
+      {
+        testimonial: 'le BET REGRAIN a imaginé une solution élégante de renfort des poutres, qui se voit peu. Cela nous a permis de conserver l\'esthétique de notre plafond à la française.',
+        name: 'Maître d\'ouvrage privé',
+        job: 'PACA',
+      },
+    ]}
+  />
+
+  <CallToAction
+    title="Travailler avec Regrain"
+    subtitle="Contactez-nous pour présenter votre projet et obtenir un devis."
+    actions={[
+      { variant: 'primary', text: 'Nous contacter', href: '/contact', icon: 'tabler:mail' },
+      { text: "L'équipe →", href: '/a-propos/equipe', icon: 'tabler:users' },
+    ]}
+  />
+</Layout>

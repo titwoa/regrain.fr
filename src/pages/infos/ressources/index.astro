@@ -1,0 +1,55 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Image from '~/components/common/Image.astro';
+import { getCollection } from 'astro:content';
+
+const metadata = { title: 'Ressources — Guides & Méthodes' };
+
+const ressources = await getCollection('ressources', ({ data }) => !data.draft);
+ressources.sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Ressources"
+    title="Guides & méthodes"
+    subtitle="Articles de fond sur le diagnostic structurel — méthodes, pathologies, réglementation et bonnes pratiques à destination des propriétaires et des professionnels."
+  />
+
+  <section class="mx-auto max-w-5xl px-4 py-12 sm:px-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      {ressources.map((res) => {
+        const dateStr = res.data.publishDate.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long' });
+        return (
+          <a
+            href={`/infos/ressources/${res.id}`}
+            class="group flex flex-col gap-3 rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition hover:border-slate-400 hover:shadow-md"
+          >
+            {res.data.image && (
+              <div class="aspect-video overflow-hidden rounded-md bg-slate-100">
+                <Image
+                  src={res.data.image.src}
+                  alt={res.data.image.alt ?? res.data.title}
+                  class="h-full w-full object-cover"
+                />
+              </div>
+            )}
+            {res.data.category && (
+              <span class="w-fit rounded-full bg-slate-100 px-2.5 py-0.5 text-xs text-slate-500">
+                {res.data.category}
+              </span>
+            )}
+            <h2 class="font-heading font-medium uppercase text-slate-800 group-hover:text-slate-600 transition leading-snug">
+              {res.data.title}
+            </h2>
+            {res.data.description && (
+              <p class="text-sm text-slate-500 leading-relaxed line-clamp-3">{res.data.description}</p>
+            )}
+            <div class="mt-auto text-xs text-slate-400">{dateStr}</div>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+</Layout>

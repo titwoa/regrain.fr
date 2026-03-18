@@ -1,0 +1,81 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Lightbox from '~/components/Lightbox.astro';
+import Image from '~/components/common/Image.astro';
+import { getCollection } from 'astro:content';
+import { render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const realisations = await getCollection('realisations');
+  return realisations.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const { title, description, publishDate, categories, location, statut, image, mapsUrl } = entry.data;
+const dateStr = publishDate.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long' });
+---
+
+<Layout metadata={{ title }}>
+  <Lightbox />
+
+  <!-- En-tête -->
+  <section class="mx-auto max-w-5xl px-4 pt-12 pb-6 sm:px-6">
+    <div class="mb-4">
+      <a href="/realisations" class="text-sm text-slate-500 hover:text-slate-700">← Retour aux réalisations</a>
+    </div>
+
+    {image && (
+      <div class="mb-6 overflow-hidden rounded-lg aspect-video bg-slate-100">
+        <Image src={image.src} alt={image.alt ?? title} class="h-full w-full object-cover" />
+      </div>
+    )}
+
+    <div class="flex flex-wrap gap-2 mb-4">
+      {categories?.map((cat) => (
+        <span class="rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-600">{cat}</span>
+      ))}
+    </div>
+
+    <h1 class="font-heading text-3xl font-medium uppercase text-slate-800 mb-3">{title}</h1>
+    <p class="text-lg text-slate-500 mb-4">{description}</p>
+
+    <div class="flex flex-wrap gap-4 text-sm text-slate-500">
+      {location && <span>📍 {location}</span>}
+      {statut && <span class="rounded-full bg-slate-800 text-white px-3 py-0.5 text-xs">{statut}</span>}
+      <span>{dateStr}</span>
+      {mapsUrl && (
+        <a href={mapsUrl} target="_blank" rel="noopener" class="text-slate-600 underline hover:text-slate-800">
+          Voir sur Google Maps →
+        </a>
+      )}
+    </div>
+  </section>
+
+  <!-- Contenu -->
+  <article class="mx-auto max-w-5xl px-4 pb-16 sm:px-6 prose prose-slate prose-headings:font-heading prose-headings:uppercase">
+    <style>
+      .prose img {
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+      .prose img:hover {
+        transform: scale(1.02);
+      }
+    </style>
+    <Content />
+  </article>
+
+  <CallToAction
+    title="Besoin d'un diagnostic similaire ?"
+    subtitle="Contactez-nous pour définir votre mission."
+    actions={[
+      { variant: 'primary', text: 'Nous contacter', href: '/contact', icon: 'tabler:mail' },
+    ]}
+  />
+</Layout>

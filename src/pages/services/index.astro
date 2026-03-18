@@ -1,0 +1,101 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features from '~/components/widgets/Features.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = { title: 'Nos services — Diagnostic Structurel' };
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Bet Regrain"
+    title="Nos services de diagnostic structurel"
+    subtitle="Bureau d'études spécialisé en diagnostic des bâtiments existants — anciens et récents, évaluation du risque structurel et de vétusté (IRS & IV) et diagnostic de vulnérabilité RGA. <br>
+    Nous réalisons aussi le suivi-l'instrumentation de pathologies avec des capteurs, des notes de calcul, des plans guides, des préconisations-descriptions de travaux ainsi que des chiffrages et le suivi des travaux."
+  />
+
+  <div class="-mt-8 md:-mt-12 lg:-mt-16">
+  <Features
+    id="services-principaux"
+    tagline="Services principaux"
+    title="Diagnostics + évaluations"
+    items={[
+      {
+        title: 'Diagnostic structure de bâtiments anciens',
+        description:
+          'Pierre, bois, terre crue, patrimoine historique. Analyse des causes relatives aux pathologies spécifiques des matériaux traditionnels, pronostic de risque adapté et préconisations de consolidation respectueuses du bâti ancien.',
+        icon: 'tabler:building-arch',
+        callToAction: { href: '/services/batiments-anciens', text: 'En savoir plus' },
+      },
+      {
+        title: 'Diagnostic structure de bâtiments récents',
+        description:
+          "Béton armé, acier, constructions postérieures à 1925. Diagnostic de fissures, corrosion des armatures, carbonatation du béton, tassements différentiels et autres pathologies propres aux matériaux rigides.",
+        icon: 'tabler:building-skyscraper',
+        callToAction: { href: '/services/batiments-modernes', text: 'En savoir plus' },
+      },
+      {
+        title: 'Évaluation indices IRS & IV',
+        description:
+          "Combinaison des calculs de <em>l'<strong>I</strong>ndice de <strong>R</strong>isque <strong>S</strong>tructurel</em> et de <em>l'<strong>I</strong>ndice de <strong>V</strong>étusté</em> pour une analyse technico-économique complète : risque structurel + vétusté + analyse de rentabilité.",
+        icon: 'tabler:report-analytics',
+        callToAction: { href: '/services/evaluation-irs-iv', text: 'En savoir plus' },
+      },
+      {
+        title: 'Diagnostic de vulnérabilité RGA',
+        description:
+          'Évaluation de la vulnérabilité au phénomène de retrait-gonflement des argiles, analyse des facteurs aggravants et programme de prévention.',
+        icon: 'tabler:ripple',
+        callToAction: { href: '/services/diagnostic-rga', text: 'En savoir plus' },
+      },
+    ]}
+    columns={2}
+  />
+  </div>
+
+  <div class="-mt-8 md:-mt-12 lg:-mt-16">
+  <Features
+    id="services-complementaires"
+    tagline="Services complémentaires"
+    title="Suivi, calcul, documentation et travaux"
+    items={[
+      {
+        title: 'Suivi de fissures & pathologies',
+        description:
+          "Pose de fissuromètres (mesure ouverture fissures) & inclinomètres (mesure déversement murs de soutènement). Collecte, export et traitement automatisé des données, rapports périodiques, analyse de l'évolution dans le temps.",
+        icon: 'tabler:zoom-scan',
+        callToAction: { href: '/services/suivi-fissures-pathologies', text: 'En savoir plus' },
+      },
+      {
+        title: 'Notes de calcul : vérification de portance & renforts',
+        description:
+          "Calcul de la portance d'éléments structuraux existants et dimensionnement des renforts. Prise en compte de la particularité des bâtiments très anciens.",
+        icon: 'tabler:math',
+        callToAction: { href: '/services/notes-calcul-renforcement', text: 'En savoir plus' },
+      },
+      {
+        title: 'Plans guide, 2D & 3D',
+        description:
+          'Plans 2D et 3D illustrant clairement les travaux à réaliser, sans équivoque, à des fins de réalisation des travaux. Plans, coupes, élévations et axonométries 3D sur format de papier aisément imprimable.',
+        icon: 'tabler:file-description',
+        callToAction: { href: '/services/precos-plans', text: 'En savoir plus' },
+      },
+      {
+        title: 'Préconisations, chiffrage & suivi de travaux',
+        description:
+          'Préconisation de travaux faisant suite au diagnostics, descriptions techniques détaillées, phasage de réalisation et estimatifs budgétaires afin de consultation des entreprises de travaux.',
+        icon: 'tabler:ruler-2',
+        callToAction: { href: '/services/precos-plans', text: 'En savoir plus' },
+      },
+    ]}
+    columns={4}
+  />
+  </div>
+
+  <CallToAction
+    title="Besoin d'un diagnostic ?"
+    subtitle="Décrivez votre situation — nous vous répondons sous 24–48h."
+    actions={[{ variant: 'primary', text: 'Nous contacter', href: '/contact', icon: 'tabler:mail' }]}
+  />
+</Layout>

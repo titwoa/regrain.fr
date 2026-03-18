@@ -1,0 +1,57 @@
+---
+import Image from '~/components/common/Image.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  image?: { src: string; alt?: string };
+  categories?: string[];
+  location?: string;
+  statut?: string;
+  publishDate?: Date;
+}
+
+const { title, description, href, image, categories, location, publishDate } = Astro.props;
+
+const dateStr = publishDate
+  ? publishDate.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long' })
+  : null;
+---
+
+<a
+  href={href}
+  class="group flex flex-col rounded-lg border border-slate-200 bg-white overflow-hidden shadow-sm transition hover:border-slate-400 hover:shadow-md"
+>
+  {image && (
+    <div class="aspect-video overflow-hidden bg-slate-100">
+      <Image
+        src={image.src}
+        alt={image.alt ?? title}
+        class="h-full w-full object-cover transition group-hover:scale-105"
+      />
+    </div>
+  )}
+  {!image && (
+    <div class="aspect-video bg-slate-100 flex items-center justify-center">
+      <span class="text-slate-400 text-sm">Photo à venir</span>
+    </div>
+  )}
+  <div class="flex flex-col gap-2 p-5 flex-1">
+    {categories && categories.length > 0 && (
+      <div class="flex flex-wrap gap-1">
+        {categories.slice(0, 3).map((cat) => (
+          <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs text-slate-600">{cat}</span>
+        ))}
+      </div>
+    )}
+    <h3 class="font-heading font-medium uppercase text-slate-800 group-hover:text-slate-600 transition leading-snug">
+      {title}
+    </h3>
+    <p class="text-sm text-slate-500 leading-relaxed line-clamp-3">{description}</p>
+    <div class="mt-auto flex items-center justify-between text-xs text-slate-400">
+      {location && <span>📍 {location}</span>}
+      {dateStr && <span>{dateStr}</span>}
+    </div>
+  </div>
+</a>

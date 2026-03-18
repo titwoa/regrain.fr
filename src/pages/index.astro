@@ -1,0 +1,232 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import ItemGrid from '~/components/ui/ItemGrid.astro';
+import Button from '~/components/ui/Button.astro';
+import AutoCarousel from '~/components/regrain/AutoCarousel.astro';
+import carouselDiag      from '~/assets/images/realisations/couvertures-documents/couverture_diag-2.png';
+import carouselIrs       from '~/assets/images/realisations/couvertures-documents/couverture_eval-irs-iv.png';
+import carouselNc        from '~/assets/images/realisations/couvertures-documents/couverture_nc.png';
+import carouselSuivi     from '~/assets/images/realisations/couvertures-documents/couverture_suivi-fissure-detail.png';
+import carouselCalc      from '~/assets/images/realisations/couvertures-documents/couverture_eval-irs-iv_detail-calc-poutrebois.png';
+import carouselChabanon  from '~/assets/images/realisations/couvertures-documents/couverture_plan-chabanon.png';
+import carouselVillars1  from '~/assets/images/realisations/couvertures-documents/couverture_plan-villars.png';
+import carouselVillars2  from '~/assets/images/realisations/couvertures-documents/couverture_plan-villars2.png';
+import carouselPreco1    from '~/assets/images/realisations/couvertures-documents/couverture_preconisation1.png';
+import carouselPreco2    from '~/assets/images/realisations/couvertures-documents/couverture_preconisation2.png';
+
+const metadata = {
+  title: 'REGRAIN — Bureau d\'études Diagnostic Structurel',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+
+  <!-- ── Hero ─────────────────────────────────────────────── -->
+  <Hero
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Demander un diagnostic',
+        href: '/contact',
+        icon: 'tabler:mail',
+      },
+      {
+        text: 'Nos services',
+        href: '/services',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      — REGRAIN —<br />
+      <span class="text-slate-500">diagnostic structurel</span><br />
+      du patrimoine bâti existant
+    </Fragment>
+    <Fragment slot="subtitle">
+      Bureau d'études structure spécialisé en diagnostic de bâtiments anciens et récents.
+      Évaluation du risque structurel, suivi/instrumentation de pathologies, notes de calcul, préconisations de renforts et plans guide
+      —<br> principalement en région <strong>PACA</strong>, vallée du Rhône et Corse.
+    </Fragment>
+  </Hero>
+
+  <!-- ── Services ──────────────────────────────────────────── -->
+  <div class="-mt-8 md:-mt-12 lg:-mt-16">
+  <Features
+    id="services"
+    tagline="Nos prestations"
+    title="Services de diagnostic structurel"
+    subtitle="Nous intervenons sur tous types d'ouvrages existants, des bâtiments anciens aux constructions récentes en béton armé."
+    items={[
+      {
+        title: 'Diagnostic de bâtiments anciens',
+        description:
+          'Pierre, bois, chaux, plâtre, terre crue & cuite  —<br> identification des pathologies spécifiques aux bâtiments et matériaux traditionnels avec préconisations de consolidation adaptées.',
+        icon: 'tabler:building-arch',
+        callToAction: { href: '/services/batiments-anciens', text: 'En savoir plus' },
+      },
+      {
+        title: 'Diagnostic de bâtiments récents',
+        description:
+          'Béton armé, poutres acier —<br> diagnostic fissures, corrosion des armatures, carbonatation du béton, tassements différentiels et autres pathologies des bâtiments récents.',
+        icon: 'tabler:building-skyscraper',
+        callToAction: { href: '/services/batiments-modernes', text: 'En savoir plus' },
+      },
+      {
+        title: 'Évaluation indices IRS & IV',
+        description:
+          'Indice de Risque Structurel et Indice de Vétusté —<br> quantification chiffrée et priorisation des interventions sur le bâti existant, à destination des gestionnaires de patrimoine bâti.',
+        icon: 'tabler:chart-bar',
+        callToAction: { href: '/services/evaluation-irs-iv', text: 'En savoir plus' },
+      },
+      {
+        title: 'Diagnostic de vulnérabilité RGA',
+        description:
+          'Évaluation de la vulnérabilité au retrait-gonflement des argiles —<br> facteurs aggravants et programme de prévention, à destination des propriétaires occupants.',
+        icon: 'tabler:ripple',
+        callToAction: { href: '/services/diagnostic-rga', text: 'En savoir plus' },
+      },
+      {
+        title: 'Suivi de fissures & pathologies',
+        description:
+          'Pose de fissuromètres & inclinomètres —<br> rapports périodiques, analyse de l\'évolution et alarmes en cas de dépassement des seuils — pour compléter un diagnostic existant.',
+        icon: 'tabler:zoom-scan',
+        callToAction: { href: '/services/suivi-fissures-pathologies', text: 'En savoir plus' },
+      },
+      {
+        title: 'Notes de calcul & plans guides',
+        description:
+          'Calcul de vérification d\'éléments structuraux existants —<br> dimensionnement des renforts, plans guide — pour analyser et documenter avec exactitude les travaux de réhabilitation.',
+        icon: 'tabler:math',
+        callToAction: { href: '/services/notes-calcul-renforcement', text: 'En savoir plus' },
+      },
+    ]}
+    columns={3}
+  />
+  </div>
+
+  <!-- ── Stats ──────────────────────────────────────────────── -->
+  <Stats
+    stats={[
+      { amount: '35+', title: "Années d'expérience" },
+      { amount: '200+', title: 'Projets réalisés' },
+      { amount: '98%', title: 'Clients satisfaits' },
+      { amount: '100%', title: 'Rapports livrés' },
+    ]}
+    classes={{ container: 'py-6 md:py-8' }}
+  />
+
+  <!-- ── À propos ───────────────────────────────────────────── -->
+  <section class="relative not-prose scroll-mt-[72px]">
+    <div class="mx-auto max-w-7xl px-4 md:px-6 py-8 md:py-10">
+    <div class="md:flex md:gap-16 items-center">
+
+      <!-- Colonne texte -->
+      <div class="md:basis-2/3 self-center">
+        <p class="text-sm font-bold tracking-wide uppercase text-primary mb-2">À propos du BET REGRAIN</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-heading mb-8">
+          Un bureau d'études indépendant,<br>spécialisé en diagnostic structurel
+        </h2>
+        <ItemGrid
+          items={[
+            {
+              title: 'Rigueur technique',
+              description: 'Chaque diagnostic est fondé sur une inspection visuelle détaillée et des investigations complémentaires adaptées au cas par cas — pas de conclusions hâtives — chaque bâtiment est différent.',
+              icon: 'tabler:check',
+            },
+            {
+              title: 'Indépendance',
+              description: 'Sans lien avec les entreprises de travaux, nous vous conseillons en toute objectivité. Le contrôle de bonne exécution des prestations de travaux est centré sur le maintien de la qualité d\'exécution, tout au long du chantier. Chaque intervenant sait ce qu\'il doit faire et comprend l\'avantage de terminer rapidement et proprement ses travaux.',
+              icon: 'tabler:shield-check',
+            },
+            {
+              title: 'Pédagogie',
+              description: 'Nos rapports sont clairs et accessibles : vous comprenez ce qui se passe et pourquoi telle solution est recommandée. Les plans guides, descriptifs de travaux et chiffrages sont parfaitement explicites pour les entreprises, ceci afin de vous fournir un montant financier totalement adapté aux travaux à réaliser.',
+              icon: 'tabler:book',
+            },
+          ]}
+          classes={{
+            container: 'gap-y-6',
+            panel: 'max-w-none',
+            title: 'text-lg font-medium leading-6 dark:text-white ml-2',
+            description: 'text-muted dark:text-slate-400 ml-2',
+            icon: 'flex h-7 w-7 items-center justify-center rounded-full bg-slate-600 dark:bg-slate-700 text-gray-50 p-1',
+          }}
+        />
+        <div class="mt-8">
+          <Button variant="link" href="/a-propos/entreprise" text="Découvrir le BET REGRAIN →" />
+        </div>
+      </div>
+
+      <!-- Colonne carrousel -->
+      <div class="md:basis-1/3 mt-10 md:mt-0">
+        <AutoCarousel
+          ratio="portrait"
+          contain={true}
+          arrows={false}
+          pagination={true}
+          interval={3000}
+          images={[
+            { src: carouselDiag,     alt: 'Rapport de diagnostic structurel' },
+            { src: carouselIrs,      alt: 'Évaluation IRS & IV' },
+            { src: carouselNc,       alt: 'Note de calcul' },
+            { src: carouselSuivi,    alt: 'Suivi de fissures' },
+            { src: carouselCalc,     alt: 'Calculs détaillés' },
+            { src: carouselChabanon, alt: 'Plan de réhabilitation' },
+            { src: carouselVillars1, alt: 'Plan guide : détails #1' },
+            { src: carouselVillars2, alt: 'Plan guide : détails #2' },
+            { src: carouselPreco1,   alt: 'Préconisations #1' },
+            { src: carouselPreco2,   alt: 'Préconisations #2' },
+          ]}
+        />
+      </div>
+
+    </div>
+    </div>
+  </section>
+
+  <!-- ── Témoignages ────────────────────────────────────────── -->
+  <Testimonials
+    title="Ce que disent nos clients"
+    classes={{ container: 'py-6 md:py-8' }}
+    testimonials={[
+      {
+        testimonial:
+          'Le rapport de Regrain nous a permis de présenter un dossier solide à notre assurance. Résultat : la prise en charge complète a été obtenue et les travaux sont financés.',
+        name: 'Propriétaire sinistré',
+        job: 'Maison de village, Jouques',
+      },
+      {
+        testimonial:
+          'Diagnostic structure complet et rapport clair sur notre maison ancienne. Les préconisations nous ont permis de cadrer le budget de rénovation avant d\'acheter.',
+        name: 'Propriétaire acquéreur',
+        job: 'Maison de maître, Avignon',
+      },
+      {
+        testimonial:
+          'Intervention rapide, rapport pédagogique. On comprend enfin d\'où viennent les fissures et ce qu\'il faut faire en priorité et à moyen terme.',
+        name: 'Syndic de copropriété',
+        job: 'Immeuble collectif en centre ville historique, Aix-en-Provence',
+      },
+    ]}
+  />
+
+  <!-- ── CTA Contact ────────────────────────────────────────── -->
+  <CallToAction
+    title="Besoin d'un diagnostic ?"
+    subtitle="Décrivez-nous votre situation — nous vous répondons sous 24–48h en semaine."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Nous contacter',
+        href: '/contact',
+        icon: 'tabler:mail',
+      },
+    ]}
+  />
+
+</Layout>

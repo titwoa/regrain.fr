@@ -1,0 +1,99 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features from '~/components/widgets/Features.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = { title: 'Diagnostic de Vulnérabilité RGA' };
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Nos services"
+    title="Diagnostic de vulnérabilité RGA"
+    subtitle="Retrait-Gonflement des Argiles — évaluation de la vulnérabilité de votre bâtiment, identification des facteurs aggravants et programme de prévention. Éligible au dispositif d'aide expérimental."
+  />
+
+  <Features
+    tagline="Le phénomène RGA"
+    title="Comprendre le retrait-gonflement des argiles"
+    items={[
+      {
+        title: 'Mécanisme',
+        description: 'Les argiles gonflantes absorbent l\'eau et gonflent (+15 à +30 % de volume), puis se rétractent lors des sécheresses. Ces mouvements du sol fissurent les fondations.',
+        icon: 'tabler:ripple',
+      },
+      {
+        title: 'Populations exposées',
+        description: 'Les maisons individuelles avec fondations superficielles (< 1 m) sont les plus vulnérables. 55 % du territoire français est classé en zone à risque moyen ou fort, 12,1 millions de maisons individuelles.',
+        icon: 'tabler:home',
+      },
+      {
+        title: 'Facteurs aggravants',
+        description: 'Végétation proche (arbres pompant l\'eau), absence de drainage, imperméabilisation insuffisante des abords, variations climatiques importantes.',
+        icon: 'tabler:trees',
+      },
+    ]}
+    columns={3}
+  />
+
+  <Steps
+    tagline="Notre méthode"
+    title="Déroulement du diagnostic RGA"
+    items={[
+      {
+        title: 'Vérification de l\'exposition',
+        description: 'Consultation de la carte RGA nationale (Géorisques), caractérisation de la zone d\'exposition.',
+        icon: 'tabler:map',
+      },
+      {
+        title: 'Visite et relevé des désordres',
+        description: 'Relevé des fissures et micro-fissures, inspection des fondations, analyse de l\'environnement immédiat.',
+        icon: 'tabler:eye',
+      },
+      {
+        title: 'Analyse des facteurs aggravants',
+        description: 'Végétation, gestion des eaux pluviales, imperméabilisation, topographie. Quantification de chaque facteur.',
+        icon: 'tabler:analyze',
+      },
+      {
+        title: 'Rapport et préconisations',
+        description: 'Rapport de vulnérabilité RGA avec programme de travaux préventifs priorisé et estimatifs. Dossier pour le dispositif d\'aide.',
+        icon: 'tabler:file-description',
+      },
+    ]}
+  />
+
+  <Features
+    tagline="Financement"
+    title="Dispositif d'aide expérimental RGA"
+    items={[
+      {
+        title: '11 départements pilotes',
+        description: 'Allier, <strong>Alpes-de-Haute-Provence</strong>, Dordogne, Gers, Indre, Lot-et-Garonne, Meurthe-et-Moselle, Nord, Puy-de-Dôme, Tarn, Tarn-et-Garonne.',
+        icon: 'tabler:map-pin',
+      },
+      {
+        title: 'Aide au diagnostic',
+        description: 'Subvention <strong>jusqu\'à 2 000 €</strong> pour le <strong>diagnostic de vulnérabilité RGA</strong> (sous conditions de ressources).',
+        icon: 'tabler:coin',
+      },
+      {
+        title: 'Aide aux travaux',
+        description: 'Subvention <strong>jusqu\'à 15 000 €</strong> pour les travaux préventifs (végétation, drainage, imperméabilisation).',
+        icon: 'tabler:tool',
+      },
+    ]}
+    columns={3}
+  />
+
+  <CallToAction
+    title="Diagnostic vulnérabilité RGA"
+    subtitle="Votre maison est-elle exposée au RGA ? Évaluons votre situation et constituons votre dossier d'aide."
+    actions={[
+      { variant: 'primary', text: 'Demander un diagnostic', href: '/contact', icon: 'tabler:mail' },
+      { text: 'En savoir plus sur le RGA →', href: '/infos/ressources/retrait-gonflement-argiles', icon: 'tabler:book' },
+    ]}
+  />
+</Layout>

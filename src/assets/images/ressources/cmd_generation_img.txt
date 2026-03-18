@@ -1,0 +1,5 @@
+# depuis la racine (actuellement : C:\Users\oturl\Documents\Work\Regrain\support\SiteWeb\regrain-website_astro)
+
+```bash
+npx @mermaid-js/mermaid-cli -i src/assets/images/ressources/methode-irs-iv.mmd -o src/assets/images/ressources/methode-irs-iv.png -w 900 -b white
+```

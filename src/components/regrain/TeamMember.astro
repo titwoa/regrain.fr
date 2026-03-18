@@ -1,0 +1,55 @@
+---
+interface Props {
+  name: string;
+  title: string;
+  image?: string;
+  stats?: Array<{ value: string; label: string }>;
+  expertise?: string[];
+  bio?: string;
+}
+
+const { name, title, image, stats, expertise, bio } = Astro.props;
+---
+
+<div class="rounded-lg border border-slate-200 bg-white p-8 shadow-sm">
+  <div class="flex flex-col sm:flex-row gap-6 items-start">
+    {image ? (
+      <img
+        src={image}
+        alt={name}
+        class="h-24 w-24 rounded-full object-cover border-2 border-slate-200 shrink-0"
+      />
+    ) : (
+      <div class="h-24 w-24 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
+        <span class="text-3xl text-slate-400">👤</span>
+      </div>
+    )}
+    <div class="flex-1">
+      <h3 class="font-heading text-xl font-medium uppercase text-slate-800">{name}</h3>
+      <p class="text-slate-500 mt-1">{title}</p>
+      {bio && <p class="mt-3 text-sm text-slate-600 leading-relaxed">{bio}</p>}
+    </div>
+  </div>
+
+  {stats && stats.length > 0 && (
+    <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-slate-100 pt-6">
+      {stats.map(({ value, label }) => (
+        <div class="text-center">
+          <div class="font-heading text-2xl font-medium text-slate-700">{value}</div>
+          <div class="text-xs text-slate-500 mt-1">{label}</div>
+        </div>
+      ))}
+    </div>
+  )}
+
+  {expertise && expertise.length > 0 && (
+    <div class="mt-6">
+      <p class="text-xs font-medium uppercase tracking-wider text-slate-400 mb-3">Domaines d'expertise</p>
+      <div class="flex flex-wrap gap-2">
+        {expertise.map((item) => (
+          <span class="rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-600">{item}</span>
+        ))}
+      </div>
+    </div>
+  )}
+</div>

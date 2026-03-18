@@ -1,0 +1,32 @@
+flowchart LR
+    %% VISITE(["🔍 Diagnostic structurel"])
+
+    subgraph IRS ["  IRS — Risque Structurel  "]
+        direction LR
+        FORMULE["IRS = D × C × S<br/>par élément"]
+        IRS_FINAL(["IRS final<br/>SEMD · SGMP"])
+        RECO["< 10 Faible<br/>10–30 Modéré<br/>30–60 Élevé<br/>60–120 Critique<br/>> 120 Danger"]
+        FORMULE --> IRS_FINAL --> RECO
+    end
+
+    subgraph IV ["  IV — Vétusté économique  "]
+        direction LR
+        POSTES["Vétusté par poste<br/>GO 50 % · Toiture 15 %<br/>Réseaux 15 % · Finitions 20 %"]
+        IV_CORR(["IV corrigé<br/>(× coeff. K)"])
+        ECONO["Valeur résiduelle<br/>Budget rénovation"]
+        POSTES --> IV_CORR --> ECONO
+    end
+
+    RAPPORT(["📄 Rapport IRS & IV"])
+
+    %% VISITE --> IRS
+    %% VISITE --> IV
+    IRS --> RAPPORT
+    IV --> RAPPORT
+
+    %% style VISITE fill:#2c5282,color:#fff,stroke:#1a365d
+    style IRS_FINAL fill:#e53e3e,color:#fff,stroke:#c53030
+    style IV_CORR fill:#2b6cb0,color:#fff,stroke:#2c5282
+    style RAPPORT fill:#276749,color:#fff,stroke:#22543d
+    style IRS fill:#fff5f5,stroke:#fc8181,color:#742a2a
+    style IV fill:#ebf8ff,stroke:#63b3ed,color:#1a365d

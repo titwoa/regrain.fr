@@ -1,0 +1,33 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features from '~/components/widgets/Features.astro';
+
+const metadata = { title: 'Infos & Blog — Regrain' };
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Infos & Blog"
+    title="Ressources & Actualités"
+    subtitle="Guides méthodologiques, veille réglementaire, sinistres structurels — tout ce qu'il faut savoir sur le diagnostic du bâti existant."
+  />
+
+  <Features
+    items={[
+      {
+        title: 'Blog & Veille',
+        description: 'Actualités sur les sinistres structurels, la réglementation RGA, la météo et le bâti. Veille de presse mensuelle.',
+        icon: 'tabler:news',
+        callToAction: { href: '/infos/blog', text: 'Lire le blog' },
+      },
+      {
+        title: 'Ressources',
+        description: 'Articles de fond : méthodes de diagnostic, pathologies du béton, évaluation IRS & IV, RGA, bâtiments anciens.',
+        icon: 'tabler:books',
+        callToAction: { href: '/infos/ressources', text: 'Consulter les ressources' },
+      },
+    ]}
+    columns={2}
+  />
+</Layout>

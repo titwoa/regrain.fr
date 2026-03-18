@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400">
+  <rect fill="#f0eeeb" width="800" height="400"/>
+  <rect fill="#939bc9" x="50" y="50" width="700" height="300" opacity="0.2"/>
+  <text x="400" y="150" font-family="Oswald, sans-serif" font-size="32" font-weight="600" fill="#1e3a5f" text-anchor="middle">MUR DE SOUTÈNEMENT</text>
+  <text x="400" y="190" font-family="Montserrat, sans-serif" font-size="18" fill="#333" text-anchor="middle">Surveillance Topographique &amp; Analyse</text>
+  <text x="400" y="220" font-family="Montserrat, sans-serif" font-size="14" fill="#666" text-anchor="middle">24 mois de suivi - 35 m linéaire - Déversement stabilisé</text>
+  <text x="400" y="260" font-family="Montserrat, sans-serif" font-size="12" fill="#999" text-anchor="middle">Topographie • Calculs Eurocodes • Solutions de renforcement</text>
+</svg>

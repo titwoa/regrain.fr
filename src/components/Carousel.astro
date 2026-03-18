@@ -1,0 +1,56 @@
+---
+// Carousel component for realisations pages using astro-swiper
+// Only renders if carousel prop is provided
+
+import { Swiper, SwiperSlide } from 'astro-swiper';
+
+const { carousel = [] } = Astro.props;
+const hasImages = carousel && carousel.length > 0;
+
+// Swiper configuration
+const swiperOptions = {
+  loop: true,
+  grabCursor: true,
+  navigation: true,
+  pagination: { clickable: true },
+  keyboard: { enabled: true },
+  breakpoints: {
+    640: { slidesPerView: 1 },
+    768: { slidesPerView: 1 },
+    1024: { slidesPerView: 1 },
+  },
+};
+---
+
+{hasImages && (
+  <div class="carousel-container sticky top-24">
+    <Swiper class="myCarousel" {...swiperOptions}>
+      {carousel.map((img) => (
+        <SwiperSlide>
+          <img
+            src={img.src}
+            alt={img.alt}
+            class="rounded-lg shadow-md w-full h-auto object-contain max-h-[500px]"
+          />
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  </div>
+)}
+
+<style>
+  .carousel-container {
+    width: 100%;
+  }
+  .myCarousel {
+    width: 100%;
+    padding-bottom: 40px !important;
+  }
+  :global(.swiper-button-next),
+  :global(.swiper-button-prev) {
+    color: #1e293b;
+  }
+  :global(.swiper-pagination-bullet-active) {
+    background: #1e293b;
+  }
+</style>

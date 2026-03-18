@@ -1,0 +1,197 @@
+---
+---
+
+<form
+  action="https://formsubmit.co/contact@regrain.fr"
+  method="POST"
+  class="space-y-5"
+  id="contact-form"
+>
+  <!-- Formsubmit config -->
+  <input type="hidden" name="_subject" value="Nouveau contact — Regrain" />
+  <input type="hidden" name="_next" value="https://regrain.fr/merci" />
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+  <!-- Nom & Prénom -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div>
+      <label for="nom" class="block text-sm font-medium text-slate-700 mb-1">
+        Nom <span class="text-red-500">*</span>
+      </label>
+      <input
+        type="text"
+        id="nom"
+        name="nom"
+        required
+        class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+        placeholder="Dupont"
+      />
+    </div>
+    <div>
+      <label for="prenom" class="block text-sm font-medium text-slate-700 mb-1">
+        Prénom <span class="text-red-500">*</span>
+      </label>
+      <input
+        type="text"
+        id="prenom"
+        name="prenom"
+        required
+        class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+        placeholder="Jean"
+      />
+    </div>
+  </div>
+
+  <!-- Email & Téléphone -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div>
+      <label for="email" class="block text-sm font-medium text-slate-700 mb-1">
+        Email <span class="text-red-500">*</span>
+      </label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+        placeholder="jean.dupont@exemple.fr"
+      />
+    </div>
+    <div>
+      <label for="telephone" class="block text-sm font-medium text-slate-700 mb-1">Téléphone</label>
+      <input
+        type="tel"
+        id="telephone"
+        name="telephone"
+        class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+        placeholder="06 XX XX XX XX"
+      />
+    </div>
+  </div>
+
+  <!-- Type de bâtiment -->
+  <div>
+    <label for="type-batiment" class="block text-sm font-medium text-slate-700 mb-1">Type de bâtiment</label>
+    <select
+      id="type-batiment"
+      name="type_batiment"
+      class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-800 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+    >
+      <option value="">-- Sélectionner --</option>
+      <option>Maison individuelle</option>
+      <option>Immeuble collectif</option>
+      <option>Bâtiment de bureaux / commercial</option>
+      <option>Bâtiment industriel</option>
+      <option>Monument / patrimoine</option>
+      <option>Autre</option>
+    </select>
+  </div>
+
+  <!-- Époque de construction -->
+  <div>
+    <label for="epoque" class="block text-sm font-medium text-slate-700 mb-1">Époque de construction</label>
+    <select
+      id="epoque"
+      name="epoque_construction"
+      class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-800 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+    >
+      <option value="">-- Sélectionner --</option>
+      <option>Avant 1900</option>
+      <option>1900–1948</option>
+      <option>1949–1975</option>
+      <option>1976–2000</option>
+      <option>Après 2000</option>
+      <option>Inconnue</option>
+    </select>
+  </div>
+
+  <!-- Localisation -->
+  <div>
+    <label for="localisation" class="block text-sm font-medium text-slate-700 mb-1">
+      Localisation du bâtiment <span class="text-red-500">*</span>
+    </label>
+    <input
+      type="text"
+      id="localisation"
+      name="localisation"
+      required
+      class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+      placeholder="Ville, code postal ou adresse"
+    />
+  </div>
+
+  <!-- Nature du besoin -->
+  <div>
+    <label for="nature-besoin" class="block text-sm font-medium text-slate-700 mb-1">Nature du besoin</label>
+    <select
+      id="nature-besoin"
+      name="nature_besoin"
+      class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-800 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+    >
+      <option value="">-- Sélectionner --</option>
+      <option>Diagnostic structurel général</option>
+      <option>Diagnostic fissures / pathologies</option>
+      <option>Évaluation IRS+IV / indice de risque/vétusté</option>
+      <option>Diagnostic vulnérabilité RGA</option>
+      <option>Suivi de fissures / Instrumentation</option>
+      <option>Note de calcul / renfort</option>
+    </select>
+  </div>
+
+  <!-- Description -->
+  <div>
+    <label for="description" class="block text-sm font-medium text-slate-700 mb-1">
+      Description du projet / des désordres <span class="text-red-500">*</span>
+    </label>
+    <textarea
+      id="description"
+      name="description"
+      rows="5"
+      required
+      class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500"
+      placeholder="Décrivez les désordres observés, la situation, et vos questions..."
+    ></textarea>
+  </div>
+
+  <!-- Urgence -->
+  <div class="flex items-center gap-2">
+    <input
+      type="checkbox"
+      id="urgence"
+      name="urgence"
+      value="Oui"
+      class="rounded border-slate-300 text-slate-600 focus:ring-slate-500"
+    />
+    <label for="urgence" class="text-sm text-slate-700">
+      Situation urgente (fissures évolutives, risque de chute, évacuation)
+    </label>
+  </div>
+
+  <!-- RGPD -->
+  <div class="flex items-start gap-2">
+    <input
+      type="checkbox"
+      id="rgpd"
+      name="rgpd"
+      required
+      class="mt-0.5 rounded border-slate-300 text-slate-600 focus:ring-slate-500"
+    />
+    <label for="rgpd" class="text-sm text-slate-500">
+      J'accepte que mes données soient utilisées pour répondre à ma demande. Elles ne seront pas
+      transmises à des tiers. Voir notre{' '}
+      <a href="/confidentialite" class="underline hover:text-slate-700">politique de confidentialité</a>. <span class="text-red-500">*</span>
+    </label>
+  </div>
+
+  <!-- Submit -->
+  <button
+    type="submit"
+    class="w-full rounded-md bg-slate-700 px-6 py-3 text-sm font-medium text-white transition hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
+  >
+    Envoyer la demande
+  </button>
+
+  <p class="text-xs text-slate-400 text-center">
+    Réponse sous 24–48h en semaine. Pour les urgences : <button data-tel="0662186835" class="underline cursor-pointer bg-transparent border-0 p-0 font-[inherit] text-[inherit]">Voir le numéro</button>
+  </p>
+</form>

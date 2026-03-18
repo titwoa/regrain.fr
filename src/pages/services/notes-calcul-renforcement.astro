@@ -1,0 +1,108 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features from '~/components/widgets/Features.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = { title: 'Notes de Calcul & Renforts Structuraux' };
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Nos services"
+    title="Notes de calcul & renforts structuraux"
+    subtitle="Les notes de calcul sont des investigations complémentaires au diagnostic structurel — elles permettent de vérifier la portance d'un élément, de dimensionner un renfort et de quantifier les travaux."
+  />
+
+  <Features
+    tagline="Pourquoi une note de calcul ?"
+    title="Trois situations qui la nécessitent"
+    items={[
+      {
+        title: 'Suite à un diagnostic structurel',
+        description: 'Le diagnostic identifie une dégradation ou une anomalie. La note de calcul précise si l\'élément est encore portant, dans quelle mesure, et quel renfort est nécessaire.',
+        icon: 'tabler:zoom-scan',
+      },
+      {
+        title: 'Évaluation de l\'indice IRS — calcul P\'/P',
+        description: 'La détermination du ratio P\'/P (portance résiduelle sur portance initiale) est au cœur du calcul de l\'indice IRS. Elle nécessite une vérification structurelle rigoureuse des éléments dégradés.',
+        icon: 'tabler:chart-bar',
+      },
+      {
+        title: 'Quantification et description des travaux',
+        description: 'En complément des plans, la note de calcul décrit et justifie les renforts : sections, matériaux, ancrages — pour que l\'entreprise puisse chiffrer et exécuter les travaux en toute sécurité.',
+        icon: 'tabler:clipboard-list',
+      },
+    ]}
+    columns={3}
+  />
+
+  <Features
+    tagline="Applications courantes"
+    title="Cas d'usage typiques"
+    items={[
+      {
+        title: 'Poteau ou poutre dégradé·e',
+        description: 'Corrosion des armatures, carbonatation, section réduite — calcul de la portance résiduelle P\' et du ratio P\'/P pour l\'IRS, puis dimensionnement du chemisage ou du renfort.',
+        icon: 'tabler:rectangle-vertical',
+      },
+      {
+        title: 'Plancher affaibli',
+        description: 'Fissuration, déformation excessive, bois attaqué — vérification de la capacité portante résiduelle et calcul des renforts (poutrelles, libage, tirants).',
+        icon: 'tabler:layers-difference',
+      },
+      {
+        title: 'Mur porteur fissuré ou déversé',
+        description: 'Évaluation de la stabilité, calcul de la charge reprise et dimensionnement d\'un renfort ou d\'une reprise en sous-œuvre.',
+        icon: 'tabler:layout-sidebar',
+      },
+      {
+        title: 'Fondations dégradées',
+        description: 'Tassement différentiel, érosion, retrait-gonflement — calcul des micropieux, longrines ou sous-œuvres pour restituer la portance initiale.',
+        icon: 'tabler:layers-subtract',
+      },
+      {
+        title: 'Surcharge ou changement de destination',
+        description: 'Vérification des planchers et fondations existants lors d\'un passage à des charges plus importantes (stockage, bureau, toiture-terrasse accessible).',
+        icon: 'tabler:transfer',
+      },
+      {
+        title: 'Ouverture dans un mur porteur',
+        description: 'Report de charges, dimensionnement du linteau ou de la poutre de substitution, vérification des appuis.',
+        icon: 'tabler:door',
+      },
+    ]}
+    columns={3}
+  />
+
+  <Features
+    tagline="Livrables"
+    title="Ce que nous remettons"
+    items={[
+      {
+        title: 'Note de calcul',
+        description: 'Hypothèses, modèle structurel, calculs détaillés et conclusions — adaptés aux bâtiments anciens (matériaux hétérogènes, sections irrégulières, données partielles).',
+        icon: 'tabler:math',
+      },
+      {
+        title: 'Spécifications techniques',
+        description: 'Matériaux, ancrages, quantités et phasage de réalisation — pour permettre le chiffrage et l\'exécution des travaux par l\'entreprise.',
+        icon: 'tabler:list-details',
+      },
+      {
+        title: 'Croquis de principe',
+        description: 'Schémas annotés illustrant la géométrie du renfort, les sections et les points singuliers — en complément de la note, sans se substituer aux plans d\'exécution.',
+        icon: 'tabler:pencil',
+      },
+    ]}
+    columns={3}
+  />
+
+  <CallToAction
+    title="Besoin d'une note de calcul ?"
+    subtitle="Suite à un diagnostic ou pour préparer des travaux de renfort, nous étudions votre situation."
+    actions={[
+      { variant: 'primary', text: 'Nous contacter', href: '/contact', icon: 'tabler:mail' },
+    ]}
+  />
+</Layout>

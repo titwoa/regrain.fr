@@ -1,0 +1,103 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features from '~/components/widgets/Features.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = { title: 'Suivi de Fissures & Pathologies' };
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Nos services"
+    title="Suivi de fissures & pathologies"
+    subtitle="Investigations complémentaires au diagnostic structure initial. Surveillance instrumentée des fissures et déversement de murs de soutènement — relevés périodiques, seuils d'alerte et rapport d'analyse de l'évolution"
+  />
+
+  <Features
+    tagline="Pourquoi surveiller ?"
+    title="L'intérêt du suivi instrumenté"
+    items={[
+      {
+        title: 'Investigations complémentaires',
+        description: 'Compléter le diagnostic structure initial par l\'instrumentation d\'une pathologie découle du besoin avéré lors du diagnostic',
+        icon: 'tabler:building-cog',
+      },
+      {
+        title: 'Documenter l\'évolution',
+        description: 'Mesures quantitatives et datées de l\'ouverture et du déplacement des fissures et des murs de soutènement',
+        icon: 'tabler:chart-line',
+      },
+      {
+        title: 'Détecter les aggravations',
+        description: 'Alertes en cas d\'accélération de l\'évolution — pour intervenir avant qu\'une situation se détériore',
+        icon: 'tabler:bell',
+      },
+      {
+        title: 'Valider la stabilisation',
+        description: 'Après travaux, le suivi confirme la stabilisation ou détecte une reprise des désordres',
+        icon: 'tabler:check',
+      },
+    ]}
+    columns={4}
+  />
+
+  <Features
+    tagline="Instruments utilisés"
+    title="Équipements de surveillance"
+    items={[
+      {
+        title: 'Fissuromètres',
+        description: 'Capteurs électroniques mesurant l\'ouverture et le déplacement 2D ou 3D des fissures. Précision ±0,1 mm. Avec envoi des données sur un serveur distant',
+        icon: 'tabler:zoom-scan',
+      },
+      {
+        title: 'Inclinomètres',
+        description: 'Mesure de l\'inclinaison des murs et des poteaux. Détection des rotations et vibrations. Report distant des données avec alertes en cas de dépassement des seuils. <br> Couplage possible avec un relevé par théodolite',
+        icon: 'tabler:angle',
+      },
+      {
+        title: 'Système de collecte, transmission et analyse des données',
+        description: 'Collecte des données de déplacement sur site sur un  «\u202Fnoeud\u202F», transmission et sauvegarde sur serveur distant sécurisé, analyse statistiques, déclenchement d\'alerte et création de rapports afférents',
+        icon: 'tabler:map',
+      },
+    ]}
+    columns={3}
+  />
+
+  <Steps
+    tagline="Notre méthode"
+    title="Déroulement du suivi"
+    items={[
+      {
+        title: 'Pose des instruments de mesure',
+        description: 'Installation des fissuromètres ou fissuromètres aux points névralgiques',
+        icon: 'tabler:tool',
+      },
+      {
+        title: 'Relevés périodiques',
+        description: 'Mesures régulières «\u202Fautomatisées\u202F» permises par transmission des données. Fréquence de mesure journalière à mensuelle, sur une durée de 1 an minimum',
+        icon: 'tabler:calendar',
+      },
+      {
+        title: 'Rapports d\'analyse intermédiaires',
+        description: 'Rapport avec graphiques d\'évolution, interprétation et alertes si nécessaire',
+        icon: 'tabler:file-description',
+      },
+      {
+        title: 'Rapport de synthèse',
+        description: 'Bilan de la période de suivi, conclusions sur la stabilité, recommandations d\'action(s) à mener',
+        icon: 'tabler:report',
+      },
+    ]}
+  />
+
+  <CallToAction
+    title="Mise en place d'un suivi"
+    subtitle="Fissures évolutives, contentieux d'assurance, suivi post-travaux — nous instrumentons et documentons."
+    actions={[
+      { variant: 'primary', text: 'Demander un devis', href: '/contact', icon: 'tabler:mail' },
+    ]}
+  />
+</Layout>

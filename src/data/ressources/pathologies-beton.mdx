@@ -1,0 +1,97 @@
+---
+title: "Pathologies du béton armé"
+description: "Guide des principales pathologies affectant les structures en béton armé : carbonatation, corrosion des armatures, fissuration, alcali-réaction, gel-dégel. Causes, diagnostic et solutions."
+publishDate: 2025-03-13
+category: "Technique"
+tags: ["Béton", "Pathologie", "Vulgarisation"]
+image:
+  src: "~/assets/images/ressources/methodes-diag/beton-abime.webp"
+  alt: "Pathologies béton armé"
+---
+import { Icon } from 'astro-icon/components';
+import PhotoGallery from '~/components/regrain/PhotoGallery.astro';
+
+## Le béton armé : matériau durable mais vulnérable
+
+Le béton armé associe la résistance à la compression du béton et la traction de l'acier. Cette synergie est efficace, mais plusieurs mécanismes peuvent compromettre la durabilité de l'ensemble.
+
+## 1. Carbonatation
+
+**Mécanisme :** Le CO₂ atmosphérique réagit avec les hydroxydes de calcium du béton, abaissant son pH de 12–13 à moins de 9. Ce processus détruit la couche passivante qui protège les armatures.
+
+**Vitesse de progression :** Proportionnelle à la racine carrée du temps. Un béton de qualité médiocre peut être carbonaté sur 30 mm en 20 ans.
+
+**Diagnostic :** Test à la phénolphtaléine sur carotte — la zone carbonatée reste incolore.
+
+**Facteurs aggravants :** Faible enrobage des armatures (< 20 mm), béton poreux, environnement urbain.
+
+## 2. Corrosion des armatures
+
+**Mécanisme :** Une fois la couche passivante détruite (par carbonatation ou chlorures), les armatures s'oxydent. La rouille occupe un volume 3–10 fois supérieur à l'acier sain, provoquant des contraintes internes et l'éclatement du béton.
+
+**Manifestations visibles :**
+- Traces de rouille en surface
+- Fissures parallèles aux armatures
+- Épaufrures (éclats de béton)
+
+**Niveaux de sévérité :**
+- Stade 1 : Rouille visible mais armature intacte → Réparation possible
+- Stade 2 : Perte de section < 20 % → Réparation avec reconstitution
+- Stade 3 : Perte de section > 20 % → Remplacement de l'armature
+
+## 3. Fissuration
+
+**Types de fissures :**
+
+| Type | Cause | Sévérité |
+|------|-------|----------|
+| Microfissures < 0,1 mm | Retrait de séchage | Faible |
+| Fissures 0,1–0,3 mm | Retrait, température | Modérée (à surveiller) |
+| Fissures > 0,3 mm | Surcharge, tassement | Élevée |
+| Fissures > 1 mm | Surcharge majeure, tassement | Critique |
+
+**Fissures de retrait vs fissures structurelles :**
+- Retrait : réseau aléatoire, ouverture uniforme, pas d'évolution rapide
+- Structurelles : orientation cohérente avec les efforts, peuvent évoluer sous charge
+
+## 4. Réaction alcali-granulats (RAG) ou sulfatique-interne (RSI)
+
+**Mécanisme :** Réaction chimique entre les alcalins du ciment et certains granulats siliceux. Gonflement interne progressif.
+
+**Manifestations :** Réseau de fissures caractéristique en « peau de crocodile », gonflement.
+
+**Diagnostic :** Analyse pétrographique sur carotte, essai d'expansion.
+
+**Spécificité :** Pathologie irréversible — seule la gestion de l'humidité peut ralentir l'évolution.
+
+## 5. Gel-dégel
+
+**Mécanisme :** L'eau absorbée par le béton gèle et se dilate (+ 9 % de volume), provoquant des pressions internes. Les cycles répétés dégradent la microstructure.
+
+**Manifestations :** Écaillage de surface, fissures superficielles, perte de matière.
+
+**Facteurs aggravants :** Béton poreux, exposition aux sels de déverglaçage, alternance gel-dégel fréquente.
+
+## <Icon name="tabler:library-photo" class="inline w-7 h-7 text-yellow-500" /> Quelques photos de faciès d'altération typique du béton
+
+<PhotoGallery images={[
+  { src: '~/assets/images/ressources/methodes-diag/29e53c98c16ec21275a1cb24dedd0538.webp', alt: 'Épaufrure — vue 1' },
+  { src: '~/assets/images/ressources/methodes-diag/20171117_153417_patho-beton-1250927.webp', alt: 'Épaufrure — vue 2' },
+  { src: '~/assets/images/ressources/methodes-diag/corrosion-amorcee.webp', alt: 'Épaufrure — vue 3' },
+  { src: '~/assets/images/ressources/methodes-diag/desordre-beton-reaction-alcali-silice-768x432.webp', alt: 'RAG — vue 1' },
+  { src: '~/assets/images/ressources/methodes-diag/fissuration.webp', alt: 'RAG — vue 2' },
+  { src: '~/assets/images/ressources/methodes-diag/Reaction-sulfatique-interne-RSI-300x180.webp', alt: 'RSI — vue 1' },
+  { src: '~/assets/images/ressources/methodes-diag/gel-interne.webp', alt: 'Gel' },
+]} />
+
+
+
+
+## Quand appeler un ingénieur ?
+
+Faites appel à un spécialiste dès que vous observez :
+- Des traces de rouille sur le béton
+- Des éclats de béton (épaufrures)
+- Des fissures > 0,3 mm sur éléments structuraux
+
+[→ Demander un diagnostic béton armé](/contact)

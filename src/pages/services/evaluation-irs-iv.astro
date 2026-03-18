@@ -1,0 +1,75 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features from '~/components/widgets/Features.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = { title: 'Évaluation IRS & IV' };
+---
+
+<Layout metadata={metadata}> 
+  <HeroText
+    tagline="Nos services"
+    title="Évaluation des indices <br> «\u202FRisque Structurel\u202F» (IRS) &  «\u202FVétusté\u202F» (IV)"
+    subtitle="Analyse technico-économique complète d'un bâtiment : <br> risque structurel (IRS) + vétusté (IV)."
+  />
+
+  <Features
+    title="Deux indices complémentaires"
+    items={[
+      {
+        title: 'IRS — Risque structurel',
+        description: 'Évalue et quantifie le risque associé à chaque élément structurel par la formule IRS = D × C × S, établie sur la base d\'un diagnostic structurel et de notes de calcul de vérification de la portance résiduelle (P\'/P). Donne les scores SEMD et SGMP du bâtiment.',
+        icon: 'tabler:home-cancel',
+      },
+      {
+        title: 'IV — Vétusté économique',
+        description: 'Évalue la vétusté économique du bâtiment en pondérant 4 postes observés lors de la visite : Gros-Œuvre (50 %), Toiture (15 %), Réseaux (15 %), Finitions (20 %). Le taux de vétusté par poste, estimé par l\'ingénieur, est le cœur du calcul.',
+        icon: 'tabler:home-dollar',
+      },
+    ]}
+    columns={2}
+  />
+
+  <Steps
+    tagline="Notre méthode"
+    title="Déroulement d'une évaluation IRS & IV"
+    items={[
+      {
+        title: 'Diagnostic structure',
+        description: 'Visite sur site + relevé des désordres sur éléments structurels, analyse des causes et pronostic des risques.',
+        icon: 'tabler:eye',
+      },
+      {
+        title: 'Notes de calcul d\'éléments structurels «\u202Fcardinaux\u202F»',
+        description: 'Vérification de la portance résiduelle P\' et du ratio avec la portance d\'origine P sur des éléments structurels essentiels.',
+        icon: 'tabler:calculator',
+      },
+      {
+        title: 'IRS : calcul des indices IRS par élément et des scores globaux',
+        description: 'Attribution des coefficients D, C, S à chaque élément. Calcul des IRS individuels et des scores globaux SEMD (risque maximal) et SGMP (risque moyen pondéré).',
+        icon: 'tabler:home-cancel',
+      },
+      {
+        title: 'IV : évaluation des taux de vétusté par poste et calcul de l\'indice IV',
+        description: 'Estimation des taux de vétusté sur 4 postes (GO, Toiture, Réseaux, Finitions) lors de la visite. Calcul de l\'IV brut pondéré, ajusté par un coefficient d\'entretien K. Le prix unitaire de reconstruction est fourni par le syndic ou son expert, ou estimé par REGRAIN à partir des indices BT01 et des transactions DVF locales.',
+        icon: 'tabler:home-dollar',
+      },
+      {
+        title: 'Rapport et analyse économique',
+        description: 'Rapport complet avec graphiques IRS par élément, IV décomposé et préconisations de travaux hiérarchisées.',
+        icon: 'tabler:home-edit',
+      },
+    ]}
+  />
+
+  <CallToAction
+    title="Évaluation IRS & IV"
+    subtitle="Obtenez une vision complète du risque structurel et de la vétusté économique de votre bâtiment."
+    actions={[
+      { variant: 'primary', text: 'Demander un devis', href: '/contact', icon: 'tabler:mail' },
+      { text: 'Lire la méthodologie →', href: '/infos/ressources/methode-evaluation-irs-iv', icon: 'tabler:book' },
+    ]}
+  />
+</Layout>

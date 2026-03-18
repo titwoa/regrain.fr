@@ -1,0 +1,71 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+
+const metadata = { title: 'Mentions légales — Regrain' };
+---
+
+<Layout metadata={metadata}>
+  <HeroText tagline="Mentions légales" title="Mentions légales" />
+
+  <article
+    class="mx-auto max-w-3xl px-4 py-12 sm:px-6 prose prose-slate prose-headings:font-heading prose-headings:uppercase"
+  >
+    <h2>Éditeur du site</h2>
+    <p>
+      <strong>Regrain</strong><br />
+      Bureau d'études structures<br />
+      361 chemin des basses beaumes<br />
+      84360 Puget<br />
+      France
+    </p>
+    <p>
+      SIRET : 511 997 538 00059<br />
+      <!-- RCS : [à compléter]<br /> -->
+      Forme juridique : Micro-entreprise<br />
+      <!-- Capital social : 1 000 €<br /> -->
+    </p>
+    <p>
+      Téléphone : <button
+        data-tel="0662186835"
+        class="underline cursor-pointer bg-transparent border-0 p-0 font-[inherit] text-[inherit]"
+        >Voir le numéro</button
+      ><br />
+      Email : <a href="mailto:contact@regrain.fr">contact@regrain.fr</a>
+    </p>
+
+    <h2>Responsable de la publication</h2>
+    <p>Olivier TURLIER</p>
+
+    <h2>Hébergement</h2>
+    <p>
+      Ce site est hébergé sur GitHub Pages :<br />
+      GitHub, Inc.<br />
+      88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis<br />
+      <a href="https://pages.github.com" target="_blank" rel="noopener">https://pages.github.com</a>
+    </p>
+
+    <h2>Propriété intellectuelle</h2>
+    <p>
+      L'ensemble du contenu de ce site (textes, images, logos, structure) est la propriété exclusive de Regrain, sauf
+      mention contraire. Toute reproduction, représentation, modification ou exploitation, totale ou partielle, est
+      interdite sans autorisation préalable écrite de Regrain.
+    </p>
+
+    <h2>Limitation de responsabilité</h2>
+    <p>
+      Regrain s'efforce de maintenir les informations de ce site à jour et exactes. Cependant, les informations publiées
+      sont données à titre indicatif et ne sauraient se substituer à un diagnostic professionnel réalisé sur site.
+      Regrain décline toute responsabilité pour les dommages résultant de l'utilisation des informations de ce site.
+    </p>
+
+    <h2>Liens hypertextes</h2>
+    <p>
+      Ce site peut contenir des liens vers des sites tiers. Regrain n'est pas responsable du contenu de ces sites et ne
+      peut être tenu responsable des dommages directs ou indirects résultant de leur consultation.
+    </p>
+
+    <h2>Droit applicable</h2>
+    <p>Ce site et les présentes mentions légales sont soumis au droit français.</p>
+  </article>
+</Layout>

@@ -1,0 +1,57 @@
+flowchart TB
+    %% Configuration des styles globaux
+    %% Utilisation de dégradés et de nodes arrondis pour un look moderne
+
+    subgraph PRE ["📊 PHASE D'ENTRÉE : DIAGNOSTIC"]
+        direction LR
+        VISITE(["🔍 <b>Inspection sur Site</b><br/>Relevés & Sondages"])
+    end
+
+    subgraph IRS ["🏗️ IRS : RISQUE STRUCTUREL"]
+        direction TB
+        FORMULE["<b>Calcul par Élément</b><br/>$IRS = D \times C \times S$"]
+        
+        subgraph SCAL_IRS ["Échelle de Risque"]
+            direction LR
+            R1["🟢 <10<br/>Faible"] 
+            R2["🟡 10-30<br/>Modéré"]
+            R3["🟠 30-60<br/>Élevé"]
+            R4["🔴 60+<br/>Critique"]
+        end
+        
+        IRS_FINAL{{"🎯 <b>IRS FINAL</b><br/>(SEMD · SGMP)"}}
+        
+        FORMULE --> IRS_FINAL
+        IRS_FINAL -.-> SCAL_IRS
+    end
+
+    subgraph IV ["💰 IV : VÉTUSTÉ ÉCONOMIQUE"]
+        direction TB
+        POSTES["<b>Pondération des Postes</b><br/>🏠 Gros Œuvre (50%)<br/>Roof Toiture (15%)<br/>💧 Réseaux (15%)<br/>🎨 Finitions (20%)"]
+        
+        IV_CORR(["⚖️ <b>IV Corrigé</b><br/>(Coefficient K)"])
+        
+        VALEUR["📉 <b>Impact Financier</b><br/>Valeur résiduelle<br/>Budget de rénovation"]
+
+        POSTES --> IV_CORR --> VALEUR
+    end
+
+    %% Sortie Finale
+    RAPPORT[["📑 <b>RAPPORT DE SYNTHÈSE</b><br/>Arbitrage Investissement"]]
+
+    %% Connexions principales
+    VISITE ==> IRS
+    VISITE ==> IV
+    IRS_FINAL ==> RAPPORT
+    VALEUR ==> RAPPORT
+
+    %% Styles CSS personnalisés
+    style VISITE fill:#f8fafc,stroke:#475569,stroke-width:2px
+    style IRS fill:#fff5f5,stroke:#f87171,stroke-width:2px,color:#991b1b
+    style IV fill:#f0f9ff,stroke:#38bdf8,stroke-width:2px,color:#075985
+    style IRS_FINAL fill:#ef4444,color:#fff,stroke:#b91c1c,stroke-width:3px
+    style RAPPORT fill:#059669,color:#fff,stroke:#065f46,stroke-width:4px
+    style R1 fill:#dcfce7,stroke:#22c55e
+    style R2 fill:#fef9c3,stroke:#eab308
+    style R3 fill:#ffedd5,stroke:#f97316
+    style R4 fill:#fee2e2,stroke:#ef4444

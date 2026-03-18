@@ -1,0 +1,186 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import ContactForm from '~/components/regrain/ContactForm.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+
+const metadata = { title: 'Contact — Regrain' };
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Contact"
+    title="Nous contacter"
+    subtitle={`Décrivez votre situation — nous vous répondons sous 24–48h en semaine.<span class="response-asterisk" aria-label="en 1 h si présomption de péril">*<span class="response-tooltip">en 1&nbsp;h si présomption de péril</span></span>`}
+  />
+
+  <section class="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <!-- Formulaire -->
+      <div>
+        <h2 class="font-heading text-xl font-medium uppercase text-slate-700 mb-6">Formulaire de contact</h2>
+        <ContactForm />
+      </div>
+
+      <!-- Informations de contact -->
+      <div class="space-y-8">
+        <div>
+          <h2 class="font-heading text-xl font-medium uppercase text-slate-700 mb-6">Coordonnées</h2>
+          <div class="space-y-4 text-sm text-slate-600">
+            <div>
+              <div class="font-medium text-slate-700">Téléphone</div>
+              <button data-tel="0662186835" class="hover:text-slate-800 underline cursor-pointer bg-transparent border-0 p-0 font-[inherit] text-[inherit]">Voir le numéro</button>
+              <div class="text-xs text-slate-400">Lun–Ven, 9h–12h30 et 14h–18h</div>
+            </div>
+            <div>
+              <div class="font-medium text-slate-700">Email</div>
+              <a href="mailto:contact@regrain.fr" class="hover:text-slate-800">contact@regrain.fr</a>
+              <div class="text-xs text-slate-400">Réponse sous 24–48h en semaine</div>
+            </div>
+            <div>
+              <div class="font-medium text-slate-700">Bureaux</div>
+              <div><a href="#map-puget" class="underline hover:text-slate-800">Vaucluse — 341 chemin des basses beaumes, 84360 Puget</a></div>
+              <div><a href="#map-marseille" class="underline hover:text-slate-800">Marseille — WA Manufacture — 10 rue Virgile Marron, 13005 Marseille</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-lg border border-slate-200 bg-slate-50 p-5">
+          <h3 class="font-heading text-sm font-medium uppercase text-slate-600 mb-2">Zone d'intervention</h3>
+          <p class="text-sm text-slate-600">
+            Principalement région <strong>PACA</strong> (84, 13, 04, 05, 83, 06), vallée du Rhône et Corse. Pour les projets spéciaux (monuments historiques, génie-civil, industrie et militaire) : toute la France.
+          </p>
+        </div>
+
+        <div class="rounded-lg border border-slate-200 bg-slate-50 p-5">
+          <h3 class="font-heading text-sm font-medium uppercase text-slate-600 mb-3">Délais indicatifs</h3>
+          <div class="space-y-1.5 text-sm text-slate-600">
+            <div class="flex justify-between"><span>Maison individuelle</span><span class="font-medium">1–2 sem.</span></div>
+            <div class="flex justify-between"><span>Immeuble collectif</span><span class="font-medium">2–4 sem.</span></div>
+            <div class="flex justify-between"><span>Urgence (péril)</span><span class="font-medium text-red-600">1–4h</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cartes Google Maps -->
+    <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div id="map-puget" class="scroll-mt-24">
+        <h3 class="font-heading text-sm font-medium uppercase text-slate-500 mb-3">Bureau Vaucluse — Puget (84)</h3>
+        <!-- adresse : 361 chemin des basses baumes, 84360 Puget -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1000!2d5.256808077167751!3d43.75539684581364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12ca1b7a97c9d6ad%3A0x39f4530edb3450da!2s361%20Chem.%20des%20Basses%20Beaumes%2C%2084360%20Puget!5e1!3m2!1sfr!2sfr!4v1772304853928!5m2!1sfr!2sfr"
+          width="100%" height="220" class="rounded-lg border border-slate-200" style="border:0;" allowfullscreen="" loading="lazy"
+          title="Bureau Regrain Puget"></iframe>
+      </div>
+      <div id="map-marseille" class="scroll-mt-24">
+        <h3 class="font-heading text-sm font-medium uppercase text-slate-500 mb-3">Bureau Marseille — WA Manufacture</h3>
+        <!-- adresse : 10 rue Virgile Marron, 13005 Marseille -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1586.2903989631143!2d5.390247533037561!3d43.290276739405016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12c9c0a630417ff9%3A0xefb0706efc4c6bb4!2s10%20Rue%20Virgile%20Marron%2C%2013005%20Marseille!5e1!3m2!1sfr!2sfr!4v1772304751013!5m2!1sfr!2sfr"
+          width="100%" height="220" class="rounded-lg border border-slate-200" style="border:0;" allowfullscreen="" loading="lazy"
+          title="Bureau Regrain Marseille - en partage avec <strong>WA Manufacture</strong> "></iframe>
+      </div>
+    </div>
+  </section>
+
+  <FAQs
+    title="Questions fréquentes"
+    items={[
+      {
+        title: 'Combien coûte un diagnostic structurel ?',
+        description: 'Maison individuelle : 900 – 2 000 € HT. Immeuble collectif : 1 250 – 4 000 € HT. Contactez-nous pour un devis précis adapté à votre situation.',
+      },
+      {
+        title: 'Dans quels délais intervenez-vous ?',
+        description: 'En général 1 à 4 semaines. Pour les urgences (présomption de péril batimentaire : fissures évolutives rapides, bruits de craquement inhabituels...), nous pouvons intervenir dans l\'heure, jour et nuit.',
+      },
+      {
+        title: 'Quelle est votre zone d\'intervention ?',
+        description: 'Principalement la région PACA, la vallée du Rhône et la Corse. Pour les projets spéciaux, toute la France.',
+      },
+      {
+        title: 'Le diagnostic est-il couvert par l\'assurance ?',
+        description: 'Dans le cadre d\'un sinistre assuré, le coût peut être pris en charge. Nous vous aidons à constituer votre dossier assureur.',
+      },
+      {
+        title: 'Êtes-vous indépendants des entreprises de travaux ?',
+        description: 'Oui, aucun lien avec des entreprises de travaux ou de matériaux. Votre intérêt seul guide nos conclusions.',
+      },
+      {
+        title: 'Quels documents puis-je vous transmettre ?',
+        description: 'Plans si disponibles, photos des désordres, historique des travaux et des sinistres, documents d\'assurance.',
+      },
+    ]}
+  />
+</Layout>
+
+<script>
+  function initMapLinks() {
+    document.querySelectorAll<HTMLAnchorElement>('a[href^="#map-"]').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.getElementById(link.getAttribute('href')!.slice(1));
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        document.querySelectorAll('[id^="map-"]').forEach((el) => el.classList.remove('map-focused'));
+        target.classList.add('map-focused');
+        setTimeout(() => target.classList.remove('map-focused'), 2500);
+      });
+    });
+  }
+  initMapLinks();
+  document.addEventListener('astro:page-load', initMapLinks);
+</script>
+
+<style is:global>
+  .map-focused iframe {
+    outline: 3px solid rgba(59, 130, 246, 0.55);
+    outline-offset: 3px;
+    border-radius: 8px;
+    transition: outline 0.3s ease;
+  }
+
+  .response-asterisk {
+    position: relative;
+    display: inline-block;
+    margin-left: 2px;
+    cursor: help;
+    color: #e11d48; /* rose-600 — signal color */
+    font-size: 1.2em;
+    font-weight: 900;
+    line-height: 1;
+    vertical-align: super;
+  }
+  .response-tooltip {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    background: #1e293b; /* slate-800 */
+    color: #f8fafc;
+    font-size: 0.78rem;
+    font-weight: 400;
+    padding: 5px 12px;
+    border-radius: 5px;
+    transition: opacity 0.18s ease, visibility 0.18s ease;
+    z-index: 20;
+  }
+  .response-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #1e293b;
+  }
+  .response-asterisk:hover .response-tooltip {
+    visibility: visible;
+    opacity: 1;
+  }
+</style>
