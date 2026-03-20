@@ -1,9 +1,33 @@
 ---
+const ALLOWED_MIME = [
+  // Images
+  'image/jpeg','image/png','image/gif','image/webp','image/bmp','image/heic','image/heif',
+  // Documents
+  'application/pdf',
+  'application/msword',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  'application/vnd.oasis.opendocument.text',
+  'application/rtf','text/rtf',
+  // Tableurs
+  'application/vnd.ms-excel',
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  'application/vnd.oasis.opendocument.spreadsheet',
+  // Texte
+  'text/plain','text/csv',
+  // Archive
+  'application/zip','application/x-zip-compressed',
+];
+const ALLOWED_EXT = [
+  'pdf','jpg','jpeg','png','gif','webp','heic','heif','bmp',
+  'txt','csv','doc','docx','odt','rtf','xls','xlsx','ods','zip',
+];
+const MAX_SIZE = 5 * 1024 * 1024; // 5 Mo
 ---
 
 <form
   action="https://formsubmit.co/contact@regrain.fr"
   method="POST"
+  enctype="multipart/form-data"
   class="space-y-5"
   id="contact-form"
 >
@@ -138,6 +162,24 @@
     </select>
   </div>
 
+  <!-- Pièce jointe -->
+  <div>
+    <label for="attachment" class="block text-sm font-medium text-slate-700 mb-1">
+      Pièce jointe <span class="text-slate-400 font-normal">(optionnel — 5 Mo max)</span>
+    </label>
+    <input
+      type="file"
+      id="attachment"
+      name="attachment"
+      accept=".pdf,.jpg,.jpeg,.png,.gif,.webp,.heic,.heif,.bmp,.txt,.csv,.doc,.docx,.odt,.rtf,.xls,.xlsx,.ods,.zip"
+      class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-800 file:mr-3 file:rounded file:border-0 file:bg-slate-100 file:px-3 file:py-1 file:text-sm file:text-slate-700 hover:file:bg-slate-200 focus:outline-none"
+    />
+    <p id="attachment-error" class="mt-1 text-xs text-red-500 hidden"></p>
+    <p class="mt-1 text-xs text-slate-400">
+      Formats acceptés : PDF, images (JPG, PNG, HEIC…), documents (DOC, ODT…), tableurs, texte, ZIP
+    </p>
+  </div>
+
   <!-- Description -->
   <div>
     <label for="description" class="block text-sm font-medium text-slate-700 mb-1">
@@ -195,3 +237,41 @@
     Réponse sous 24–48h en semaine. Pour les urgences : <button data-tel="0662186835" class="underline cursor-pointer bg-transparent border-0 p-0 font-[inherit] text-[inherit]">Voir le numéro</button>
   </p>
 </form>
+
+<script is:inline define:vars={{ ALLOWED_MIME, ALLOWED_EXT, MAX_SIZE }}>
+  const input = document.getElementById('attachment');
+  const error = document.getElementById('attachment-error');
+  const form  = document.getElementById('contact-form');
+
+  input.addEventListener('change', () => validateFile());
+  form.addEventListener('submit', (e) => {
+    if (!validateFile()) e.preventDefault();
+  });
+
+  function validateFile() {
+    error.classList.add('hidden');
+    error.textContent = '';
+    const file = input.files[0];
+    if (!file) return true;
+
+    const ext = file.name.split('.').pop().toLowerCase();
+    const mime = file.type.toLowerCase();
+
+    if (!ALLOWED_EXT.includes(ext) && !ALLOWED_MIME.includes(mime)) {
+      showError(`Type de fichier non autorisé (.${ext}). Formats acceptés : PDF, images, documents Office/ODT, texte, ZIP.`);
+      input.value = '';
+      return false;
+    }
+    if (file.size > MAX_SIZE) {
+      showError(`Fichier trop volumineux (${(file.size/1024/1024).toFixed(1)} Mo). Taille maximum : 5 Mo.`);
+      input.value = '';
+      return false;
+    }
+    return true;
+  }
+
+  function showError(msg) {
+    error.textContent = msg;
+    error.classList.remove('hidden');
+  }
+</script>
