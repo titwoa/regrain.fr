@@ -4,7 +4,44 @@ import HeroText from '~/components/widgets/HeroText.astro';
 import ContactForm from '~/components/regrain/ContactForm.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 
-const metadata = { title: 'Contact — Regrain' };
+const metadata = { title: 'Contact — Regrain Bureau d\'études structures PACA', description: "Contactez Regrain — bureau d'études structures PACA. Devis sous 48 h, intervention urgence possible. Puget-sur-Durance (84)." };
+
+const jsonLdFaq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Combien coûte un diagnostic structurel ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Maison individuelle : 900 – 2 000 € HT. Immeuble collectif : 1 250 – 4 000 € HT. Contactez-nous pour un devis précis adapté à votre situation." }
+    },
+    {
+      "@type": "Question",
+      "name": "Dans quels délais intervenez-vous ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "En général 1 à 4 semaines. Pour les urgences (présomption de péril bâtimentaire : fissures évolutives rapides, bruits de craquement inhabituels), nous pouvons intervenir dans l'heure, jour et nuit." }
+    },
+    {
+      "@type": "Question",
+      "name": "Quelle est votre zone d'intervention ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Principalement la région PACA (84, 13, 04, 05, 83, 06), la vallée du Rhône et la Corse. Pour les projets spéciaux (monuments historiques, génie civil), toute la France." }
+    },
+    {
+      "@type": "Question",
+      "name": "Le diagnostic est-il couvert par l'assurance ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Dans le cadre d'un sinistre assuré, le coût peut être pris en charge. Nous vous aidons à constituer votre dossier assureur." }
+    },
+    {
+      "@type": "Question",
+      "name": "Êtes-vous indépendants des entreprises de travaux ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Oui, aucun lien avec des entreprises de travaux ou de matériaux. Votre intérêt seul guide nos conclusions." }
+    },
+    {
+      "@type": "Question",
+      "name": "Quels documents puis-je vous transmettre ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Plans si disponibles, photos des désordres, historique des travaux et des sinistres, documents d'assurance." }
+    }
+  ]
+};
 ---
 
 <Layout metadata={metadata}>
@@ -38,9 +75,8 @@ const metadata = { title: 'Contact — Regrain' };
               <div class="text-xs text-slate-400">Réponse sous 24–48h en semaine</div>
             </div>
             <div>
-              <div class="font-medium text-slate-700">Bureaux</div>
-              <div><a href="#map-puget" class="underline hover:text-slate-800">Vaucluse — 341 chemin des basses beaumes, 84360 Puget</a></div>
-              <div><a href="#map-marseille" class="underline hover:text-slate-800">Marseille — WA Manufacture — 10 rue Virgile Marron, 13005 Marseille</a></div>
+              <div class="font-medium text-slate-700">Bureau</div>
+              <div><a href="#map-puget" class="underline hover:text-slate-800">341 chemin des basses beaumes, 84360 Puget-sur-Durance (84)</a></div>
             </div>
           </div>
         </div>
@@ -63,23 +99,14 @@ const metadata = { title: 'Contact — Regrain' };
       </div>
     </div>
 
-    <!-- Cartes Google Maps -->
-    <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <!-- Carte Google Maps -->
+    <div class="mt-12 max-w-xl">
       <div id="map-puget" class="scroll-mt-24">
-        <h3 class="font-heading text-sm font-medium uppercase text-slate-500 mb-3">Bureau Vaucluse — Puget (84)</h3>
-        <!-- adresse : 361 chemin des basses baumes, 84360 Puget -->
+        <h3 class="font-heading text-sm font-medium uppercase text-slate-500 mb-3">Bureau — Puget-sur-Durance (84)</h3>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1000!2d5.256808077167751!3d43.75539684581364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12ca1b7a97c9d6ad%3A0x39f4530edb3450da!2s361%20Chem.%20des%20Basses%20Beaumes%2C%2084360%20Puget!5e1!3m2!1sfr!2sfr!4v1772304853928!5m2!1sfr!2sfr"
           width="100%" height="220" class="rounded-lg border border-slate-200" style="border:0;" allowfullscreen="" loading="lazy"
-          title="Bureau Regrain Puget"></iframe>
-      </div>
-      <div id="map-marseille" class="scroll-mt-24">
-        <h3 class="font-heading text-sm font-medium uppercase text-slate-500 mb-3">Bureau Marseille — WA Manufacture</h3>
-        <!-- adresse : 10 rue Virgile Marron, 13005 Marseille -->
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1586.2903989631143!2d5.390247533037561!3d43.290276739405016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12c9c0a630417ff9%3A0xefb0706efc4c6bb4!2s10%20Rue%20Virgile%20Marron%2C%2013005%20Marseille!5e1!3m2!1sfr!2sfr!4v1772304751013!5m2!1sfr!2sfr"
-          width="100%" height="220" class="rounded-lg border border-slate-200" style="border:0;" allowfullscreen="" loading="lazy"
-          title="Bureau Regrain Marseille - en partage avec <strong>WA Manufacture</strong> "></iframe>
+          title="Bureau Regrain Puget-sur-Durance"></iframe>
       </div>
     </div>
   </section>
@@ -113,6 +140,9 @@ const metadata = { title: 'Contact — Regrain' };
       },
     ]}
   />
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLdFaq)} />
+
 </Layout>
 
 <script>

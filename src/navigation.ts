@@ -38,6 +38,10 @@ export const headerData = {
           href: getPermalink('/services/precos-plans'),
         },
         {
+          text: "Rapports d'expertise",
+          href: getPermalink('/services/rapports-expertise'),
+        },
+        {
           text: '→ Tous nos services',
           href: getPermalink('/services'),
         },
@@ -89,7 +93,7 @@ export const footerData = {
         { text: 'Instrumentation de fissures', href: getPermalink('/services/suivi-fissures-pathologies') },
         { text: 'Notes de calcul', href: getPermalink('/services/notes-calcul-renforcement') },
         { text: 'Préconisations & Plans', href: getPermalink('/services/precos-plans') },
-        // { text: 'Rapports d\'expertise', href: getPermalink('/services/rapports-expertise') },
+        { text: "Rapports d'expertise", href: getPermalink('/services/rapports-expertise') },
       ],
     },
     {

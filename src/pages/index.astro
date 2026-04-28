@@ -23,6 +23,77 @@ const metadata = {
   title: 'REGRAIN — Bureau d\'études Diagnostic Structurel',
   ignoreTitleTemplate: true,
 };
+
+const jsonLdLocalBusiness = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "ProfessionalService"],
+  "name": "Regrain",
+  "alternateName": "BET Regrain",
+  "description": "Bureau d'études structures indépendant spécialisé en diagnostic structurel du bâti existant. Bâtiments anciens en pierre, pisé et chaux, constructions béton armé, évaluation IRS & IV, RGA. Intervention en urgence. PACA.",
+  "url": "https://regrain.fr",
+  "telephone": "+33662186835",
+  "email": "contact@regrain.fr",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "341 chemin des basses beaumes",
+    "addressLocality": "Puget-sur-Durance",
+    "postalCode": "84360",
+    "addressCountry": "FR",
+    "addressRegion": "Provence-Alpes-Côte d'Azur"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 43.7554,
+    "longitude": 5.2568
+  },
+  "areaServed": [
+    { "@type": "State", "name": "Provence-Alpes-Côte d'Azur" },
+    { "@type": "AdministrativeArea", "name": "Vaucluse" },
+    { "@type": "AdministrativeArea", "name": "Bouches-du-Rhône" },
+    { "@type": "AdministrativeArea", "name": "Alpes-de-Haute-Provence" },
+    { "@type": "AdministrativeArea", "name": "Var" },
+    { "@type": "AdministrativeArea", "name": "Hautes-Alpes" },
+    { "@type": "AdministrativeArea", "name": "Alpes-Maritimes" },
+    { "@type": "AdministrativeArea", "name": "Gard" },
+    { "@type": "AdministrativeArea", "name": "Corse" }
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  ],
+  "priceRange": "€€",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Services de diagnostic structurel",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Diagnostic structurel bâtiments anciens", "url": "https://regrain.fr/services/batiments-anciens" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Diagnostic structurel bâtiments récents", "url": "https://regrain.fr/services/batiments-modernes" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Évaluation IRS & IV", "url": "https://regrain.fr/services/evaluation-irs-iv" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Diagnostic de vulnérabilité RGA", "url": "https://regrain.fr/services/diagnostic-rga" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Suivi de fissures et pathologies", "url": "https://regrain.fr/services/suivi-fissures-pathologies" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Notes de calcul et renforts structuraux", "url": "https://regrain.fr/services/notes-calcul-renforcement" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Rapports d'expertise structurale", "url": "https://regrain.fr/services/rapports-expertise" } }
+    ]
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Olivier Turlier",
+    "jobTitle": "Ingénieur structures — Fondateur",
+    "url": "https://regrain.fr/a-propos/equipe",
+    "sameAs": "https://www.linkedin.com/in/olitur"
+  },
+  "sameAs": ["https://www.linkedin.com/company/bet-regrain"],
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://regrain.fr/logo_regrain_250px.png",
+    "width": 250,
+    "height": 250
+  }
+};
 ---
 
 <Layout metadata={metadata}>
@@ -228,5 +299,8 @@ const metadata = {
       },
     ]}
   />
+
+  <!-- ── Données structurées JSON-LD ───────────────────────── -->
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLdLocalBusiness)} />
 
 </Layout>

@@ -43,11 +43,4 @@ La section **Infos & Blog** regroupe :
 - Un [Blog](/infos/blog) de veille — actualités RGA, sinistres structurels, réglementation, météo & bâti — alimenté par une veille de presse mensuelle organisée par thème
 - Des [Ressources](/infos/ressources) — articles de fond sur nos méthodes, dont la [méthodologie IRS & IV](/infos/ressources/methode-evaluation-irs-iv) détaillée avec exemples de calcul
 
-## La suite
-
-Le site est encore en construction. Les prochaines étapes prévues :
-
-- compléter les fiches de réalisation avec photos,
-- mettre en ligne les ressources téléchargeables.
-
 N'hésitez pas à nous écrire à [contact@regrain.fr](mailto:contact@regrain.fr) pour toute question ou demande de diagnostic.

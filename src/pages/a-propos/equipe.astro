@@ -4,16 +4,16 @@ import HeroText from '~/components/widgets/HeroText.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import TeamMember from '~/components/regrain/TeamMember.astro';
 import photoOTurlier from '~/assets/images/team/o-turlier.jpg';
-import photoNextinge from '~/assets/images/team/avatar.png';
 
-const metadata = { title: "L'équipe Regrain" };
+
+const metadata = { title: "L'équipe — Regrain BET structures PACA", description: "Rencontrez Olivier Turlier, ingénieur fondateur de Regrain — 35 ans d'expérience en diagnostic structurel du bâti existant, PACA." };
 ---
 
 <Layout metadata={metadata}>
   <HeroText
     tagline="À propos"
     title="L'équipe du BET REGRAIN"
-    subtitle="Des ingénieurs expérimentés, spécialisés dans le diagnostic du bâti existant."
+    subtitle="Un ingénieur expérimenté, spécialisé dans le diagnostic du bâti existant."
   />
 
   <section class="mx-auto max-w-5xl px-4 py-16 sm:px-6 space-y-8">
@@ -40,26 +40,6 @@ const metadata = { title: "L'équipe Regrain" };
       ]}
     />
 
-    <TeamMember
-      name="Prénom NOM"
-      title="Ingénieur — Spécialiste Diagnostics"
-      image={photoNextinge.src}
-      bio="Diplômé de l'École Centrale, Prénom NOM apporte son expertise en béton armé, structures modernes et méthodes de diagnostic instrumenté. Il est spécialisé dans les structures en béton et la corrosion des armatures."
-      stats={[
-        { value: '15+', label: 'Ans en diagnostics' },
-        { value: '8+', label: 'Ans calcul structure' },
-        { value: 'Centrale', label: 'Diplôme' },
-        { value: 'PACA', label: 'Région principale' },
-      ]}
-      expertise={[
-        'Béton armé et corrosion',
-        'Méthodes non-destructives',
-        'Calcul aux Eurocodes',
-        'Diagnostic RGA',
-        'Suivi instrumenté',
-        'Dossiers assurance',
-      ]}
-    />
   </section>
 
   <section class="mx-auto max-w-5xl px-4 pb-16 sm:px-6">
