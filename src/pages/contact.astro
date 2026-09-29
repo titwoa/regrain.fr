@@ -4,7 +4,7 @@ import HeroText from '~/components/widgets/HeroText.astro';
 import ContactForm from '~/components/regrain/ContactForm.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 
-const metadata = { title: 'Contact — Regrain Bureau d\'études structures PACA', description: "Contactez Regrain — bureau d'études structures PACA. Devis sous 48 h, intervention urgence possible. Puget-sur-Durance (84)." };
+const metadata = { title: 'Contact — Regrain Bureau d\'études structures PACA', description: "Contacter Regrain, bureau d'études structures à Puget-sur-Durance (84). Activité arrêtée en mai 2026 : plus de nouvelle mission." };
 
 const jsonLdFaq = {
   "@context": "https://schema.org",
@@ -13,12 +13,7 @@ const jsonLdFaq = {
     {
       "@type": "Question",
       "name": "Combien coûte un diagnostic structurel ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Maison individuelle : 900 – 2 000 € HT. Immeuble collectif : 1 250 – 4 000 € HT. Contactez-nous pour un devis précis adapté à votre situation." }
-    },
-    {
-      "@type": "Question",
-      "name": "Dans quels délais intervenez-vous ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "En général 1 à 4 semaines. Pour les urgences (présomption de péril bâtimentaire : fissures évolutives rapides, bruits de craquement inhabituels), nous pouvons intervenir dans l'heure, jour et nuit." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Maison individuelle : 900 – 2 000 € HT. Immeuble collectif : 1 250 – 4 000 € HT. Tarifs pratiqués jusqu'à l'arrêt de l'activité, en mai 2026." }
     },
     {
       "@type": "Question",
@@ -48,7 +43,7 @@ const jsonLdFaq = {
   <HeroText
     tagline="Contact"
     title="Nous contacter"
-    subtitle={`Décrivez votre situation — nous vous répondons sous 24–48h en semaine.<span class="response-asterisk" aria-label="en 1 h si présomption de péril">*<span class="response-tooltip">en 1&nbsp;h si présomption de péril</span></span>`}
+    subtitle="Regrain a cessé son activité en mai 2026 et n'accepte plus de nouvelle mission. Pour une question sur un rapport déjà remis, écrivez-nous."
   />
 
   <section class="mx-auto max-w-6xl px-4 py-12 sm:px-6">
@@ -72,11 +67,10 @@ const jsonLdFaq = {
             <div>
               <div class="font-medium text-slate-700">Email</div>
               <a href="mailto:contact@regrain.fr" class="hover:text-slate-800">contact@regrain.fr</a>
-              <div class="text-xs text-slate-400">Réponse sous 24–48h en semaine</div>
             </div>
             <div>
               <div class="font-medium text-slate-700">Bureau</div>
-              <div><a href="#map-puget" class="underline hover:text-slate-800">341 chemin des basses beaumes, 84360 Puget-sur-Durance (84)</a></div>
+              <div><a href="#map-puget" class="underline hover:text-slate-800">361 chemin des basses beaumes, 84360 Puget-sur-Durance (84)</a></div>
             </div>
           </div>
         </div>
@@ -88,14 +82,6 @@ const jsonLdFaq = {
           </p>
         </div>
 
-        <div class="rounded-lg border border-slate-200 bg-slate-50 p-5">
-          <h3 class="font-heading text-sm font-medium uppercase text-slate-600 mb-3">Délais indicatifs</h3>
-          <div class="space-y-1.5 text-sm text-slate-600">
-            <div class="flex justify-between"><span>Maison individuelle</span><span class="font-medium">1–2 sem.</span></div>
-            <div class="flex justify-between"><span>Immeuble collectif</span><span class="font-medium">2–4 sem.</span></div>
-            <div class="flex justify-between"><span>Urgence (péril)</span><span class="font-medium text-red-600">1–4h</span></div>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -116,11 +102,7 @@ const jsonLdFaq = {
     items={[
       {
         title: 'Combien coûte un diagnostic structurel ?',
-        description: 'Maison individuelle : 900 – 2 000 € HT. Immeuble collectif : 1 250 – 4 000 € HT. Contactez-nous pour un devis précis adapté à votre situation.',
-      },
-      {
-        title: 'Dans quels délais intervenez-vous ?',
-        description: 'En général 1 à 4 semaines. Pour les urgences (présomption de péril batimentaire : fissures évolutives rapides, bruits de craquement inhabituels...), nous pouvons intervenir dans l\'heure, jour et nuit.',
+        description: 'Maison individuelle : 900 – 2 000 € HT. Immeuble collectif : 1 250 – 4 000 € HT. Tarifs pratiqués jusqu\'à l\'arrêt de l\'activité, en mai 2026.',
       },
       {
         title: 'Quelle est votre zone d\'intervention ?',

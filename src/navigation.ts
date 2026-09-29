@@ -128,7 +128,7 @@ export const footerData = {
   ],
   footNote: `
     © ${new Date().getFullYear()} <strong>Regrain</strong> · SIRET 511 997 538 00059
-    · 341 chemin des basses beaumes, 84360 Puget
+    · 361 chemin des basses beaumes, 84360 Puget
     · <button data-tel="0662186835" style="background:none;border:none;padding:0;cursor:pointer;text-decoration:underline;color:inherit;font:inherit">Voir le numéro</button>
     · <a href="mailto:contact@regrain.fr">contact@regrain.fr</a>
   `,

@@ -2,7 +2,6 @@
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Features from '~/components/widgets/Features.astro';
-import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
 import ItemGrid from '~/components/ui/ItemGrid.astro';
@@ -35,7 +34,7 @@ const jsonLdLocalBusiness = {
   "email": "contact@regrain.fr",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "341 chemin des basses beaumes",
+    "streetAddress": "361 chemin des basses beaumes",
     "addressLocality": "Puget-sur-Durance",
     "postalCode": "84360",
     "addressCountry": "FR",
@@ -103,7 +102,7 @@ const jsonLdLocalBusiness = {
     actions={[
       {
         variant: 'primary',
-        text: 'Demander un diagnostic',
+        text: 'Nous écrire',
         href: '/contact',
         icon: 'tabler:mail',
       },
@@ -179,17 +178,6 @@ const jsonLdLocalBusiness = {
     columns={3}
   />
   </div>
-
-  <!-- ── Stats ──────────────────────────────────────────────── -->
-  <Stats
-    stats={[
-      { amount: '35+', title: "Années d'expérience" },
-      { amount: '200+', title: 'Projets réalisés' },
-      { amount: '98%', title: 'Clients satisfaits' },
-      { amount: '100%', title: 'Rapports livrés' },
-    ]}
-    classes={{ container: 'py-6 md:py-8' }}
-  />
 
   <!-- ── À propos ───────────────────────────────────────────── -->
   <section class="relative not-prose scroll-mt-[72px]">
@@ -289,7 +277,7 @@ const jsonLdLocalBusiness = {
   <!-- ── CTA Contact ────────────────────────────────────────── -->
   <CallToAction
     title="Besoin d'un diagnostic ?"
-    subtitle="Décrivez-nous votre situation — nous vous répondons sous 24–48h en semaine."
+    subtitle="Regrain a cessé son activité en mai 2026 et n'accepte plus de nouvelle mission. Pour une question sur un rapport déjà remis, écrivez-nous."
     actions={[
       {
         variant: 'primary',
